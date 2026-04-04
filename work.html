@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Miguel Romero Jr</title>
+<meta property="og:title" content="Work — Miguel Romero Jr" />
+<meta property="og:description" content="Visual portfolio — social media wins, campaigns, and launch videos." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f0ede8;
+    --bg-section: #e6e2dc;
+    --bg-card: #faf9f7;
+    --bg-dark: #141414;
+    --accent: #B71622;
+    --accent-light: rgba(183,22,34,0.08);
+    --accent-hover: #9a1019;
+    --text: #111111;
+    --text-muted: #5a5a5a;
+    --text-light: #999999;
+    --border: #d0cbc3;
+    --font: 'DM Sans', sans-serif;
+    --font-serif: 'DM Serif Display', serif;
+  }
+  html { overflow-y: scroll; scroll-behavior: smooth; }
+  html, body { min-height: 100%; background: var(--bg); color: var(--text); font-family: var(--font); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+  body { padding-top: 56px; }
+
+  /* ── HEADER ── */
+  .header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(240,237,232,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px;
+  }
+  .header-logo { font-family: var(--font-serif); font-size: 20px; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+  .header-nav { display: flex; gap: 32px; align-items: center; }
+  .header-nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.15s; }
+  .header-nav a:hover { color: var(--text); }
+  .header-nav a.active { color: var(--accent); }
+  .header-back {
+    font-size: 12px; font-weight: 600; color: var(--text-muted);
+    text-decoration: none; letter-spacing: 0.04em;
+    display: flex; align-items: center; gap: 6px; transition: color 0.15s;
+  }
+  .header-back:hover { color: var(--text); }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    background: var(--bg-dark); padding: 64px 64px 56px;
+    border-bottom: 1px solid #222;
+  }
+  .page-hero-inner { max-width: 1100px; margin: 0 auto; }
+  .page-hero-eyebrow {
+    font-size: 11px; font-weight: 700; color: var(--accent);
+    letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .page-hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); display: block;
+  }
+  .page-hero-title {
+    font-family: var(--font); font-weight: 900;
+    font-size: clamp(56px, 9vw, 120px);
+    color: #fff; line-height: 0.9; letter-spacing: -0.04em;
+    text-transform: uppercase; margin-bottom: 24px;
+  }
+  .page-hero-title em { color: var(--accent); font-style: normal; }
+  .page-hero-sub {
+    font-size: 15px; color: rgba(255,255,255,0.4); max-width: 560px; line-height: 1.7;
+  }
+
+  /* ── SHARED SECTION STYLES ── */
+  .section { padding: 80px 64px; }
+  .section--light { background: var(--bg); }
+  .section--alt { background: var(--bg-section); }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .section-title { font-family: var(--font-serif); font-size: clamp(22px, 2.8vw, 36px); color: var(--text); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 40px; }
+
+  /* ── TWEETS ── */
+  .tweet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+  /* ── WORK ── */
+  .work-grid { display: flex; flex-direction: column; gap: 16px; }
+  .work-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 32px; }
+  .work-tag { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
+  .work-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
+  .work-desc { font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; }
+
+  /* ── FOOTER ── */
+  .footer { background: var(--bg-dark); padding: 32px 64px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.35); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.15s; }
+  .footer-links a:hover { color: #fff; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .header { padding: 0 20px; } .header-nav { gap: 18px; }
+    .page-hero { padding: 48px 20px 40px; }
+    .section { padding: 56px 20px; }
+    .tweet-grid { grid-template-columns: 1fr; }
+    .footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
+    .footer-links { justify-content: center; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <a href="index.html" class="header-back">← Miguel Romero Jr</a>
+  <nav class="header-nav">
+    <a href="#wins">Social Wins</a>
+    <a href="#videos">Videos</a>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-eyebrow">Visual Portfolio</div>
+    <div class="page-hero-title">The<br><em>Work.</em></div>
+    <p class="page-hero-sub">Campaigns, launches, live streams, and social content built across Agoric, Joyn, Gemini, and Nifty Gateway.</p>
+  </div>
+</div>
+
+<!-- SOCIAL WINS -->
+<section class="section section--light" id="wins">
+  <div class="section-inner">
+    <div class="section-eyebrow">Selected Posts</div>
+    <div class="section-title">Favorite Social Media Wins</div>
+    <div class="tweet-grid">
+      <div>
+        <blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">1/ Today we are excited to introduce ✨Publishers✨<br>A new platform that will enable people to curate their own drops on Nifty Gateway. <a href="https://t.co/SUsOUhdzS0">pic.twitter.com/SUsOUhdzS0</a></p>
+          &mdash; Nifty Gateway Studio (@niftygateway) <a href="https://twitter.com/niftygateway/status/1565324386323890178?ref_src=twsrc%5Etfw">September 1, 2022</a>
+        </blockquote>
+      </div>
+      <div>
+        <blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">The Agoric Orchestration API is now LIVE on Mainnet 🚀<br><br>Say goodbye to complex, multi-step chaos and witness the power of one-click, cross-chain innovation! <a href="https://t.co/UllUHygaJL">pic.twitter.com/UllUHygaJL</a></p>
+          &mdash; Agoric (@agoric) <a href="https://twitter.com/agoric/status/1843713327392010725?ref_src=twsrc%5Etfw">October 8, 2024</a>
+        </blockquote>
+      </div>
+      <div>
+        <blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">★ Introducing our newest feature, Composer!<br><br>Your journey starts here ↓<a href="https://t.co/Rk81N0YHca">https://t.co/Rk81N0YHca</a> <a href="https://t.co/wQwqOZ74kG">pic.twitter.com/wQwqOZ74kG</a></p>
+          &mdash; Joyn (@joynxyz) <a href="https://twitter.com/joynxyz/status/1688569550562803713?ref_src=twsrc%5Etfw">August 7, 2023</a>
+        </blockquote>
+      </div>
+    </div>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+</section>
+
+<!-- VIDEOS / SELECTED WORK -->
+<section class="section section--alt" id="videos">
+  <div class="section-inner">
+    <div class="section-eyebrow">Portfolio</div>
+    <div class="section-title">Selected Work</div>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-tag">Product Launch</div>
+        <div class="work-title">Joyn — Product Launch Live Stream</div>
+        <div class="work-desc">Live stream amassed 2K live viewers on X and 10K+ views lifetime for new product launch at Joyn.</div>
+        <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
+          <iframe src="https://www.youtube.com/embed/80GqoOiyNsE" title="Joyn Product Launch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-tag">Event Coverage</div>
+        <div class="work-title">Agoric — Live Event Coverage</div>
+        <div class="work-desc">Live conference coverage streamed to the Agoric community, driving real-time engagement across Web3 developer audiences.</div>
+        <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
+          <iframe src="https://www.youtube.com/embed/0acR0FB9ZGk" title="Agoric Event Coverage" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-tag">GTM Launch Video</div>
+        <div class="work-title">Nifty Gateway — Mobile App Launch</div>
+        <div class="work-desc">GTM launch video produced for Nifty Gateway's mobile app release, driving awareness and adoption across a 600K+ audience.</div>
+        <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
+          <iframe src="https://www.youtube.com/embed/1uY-vv7KNW0" title="Nifty Gateway Mobile Launch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span>miguel@romerojr.com</span>
+  <div class="footer-links">
+    <a href="https://twitter.com/romerojr__" target="_blank">X / Twitter</a>
+    <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
+    <a href="mailto:miguel@romerojr.com">Email</a>
+    <a href="index.html">Home</a>
+  </div>
+</footer>
+
+</body>
+</html>
