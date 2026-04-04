@@ -34,98 +34,38 @@
   /* ── HEADER ── */
   .header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(240,237,232,0.95); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    background: rgba(184,180,174,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
     padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px;
   }
   .header-logo { font-family: var(--font-serif); font-size: 20px; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
   .header-nav { display: flex; gap: 32px; }
-  .header-nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.15s; }
+  .header-nav a { font-size: 12px; color: rgba(0,0,0,0.55); text-decoration: none; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.15s; }
   .header-nav a:hover { color: var(--text); }
 
   /* ── HERO ── */
   .hero {
-    background: var(--bg); padding: 64px 64px 0;
+    background: #b8b4ae; /* matched to photo background */
     position: relative; overflow: hidden;
+    height: calc(100vh - 56px);
+    display: flex; align-items: center; justify-content: center;
   }
-  .hero-inner { max-width: 1200px; margin: 0 auto; }
-
-  /* Big name row */
-  .hero-name-row {
-    display: flex; align-items: flex-end; justify-content: space-between;
-    gap: 24px; margin-bottom: 0;
-  }
-  .hero-name {
-    font-family: var(--font); font-weight: 900;
-    font-size: clamp(72px, 11vw, 160px);
-    color: var(--text); line-height: 0.9; letter-spacing: -0.04em;
-    text-transform: uppercase; flex-shrink: 0;
-  }
-  .hero-meta {
-    padding-bottom: 12px; text-align: right; flex-shrink: 0;
-  }
-  .hero-meta-title {
-    font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.4;
-  }
-  .hero-meta-tags {
-    font-size: 13px; color: var(--text-muted); margin-top: 4px;
-  }
-  .hero-meta-tags span { color: var(--accent); }
-
-  /* Photo strip */
-  .hero-photos {
-    display: grid; grid-template-columns: 2fr 1fr;
-    gap: 12px; margin-top: 24px;
-    height: 360px;
-  }
-  .hero-photo {
-    border-radius: 8px 8px 0 0; overflow: hidden;
-    background: #c8c4be;
-  }
-  .hero-photo img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  .hero img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
     display: block;
   }
-  .hero-photo-placeholder {
-    width: 100%; height: 100%;
-    background: linear-gradient(135deg, #d4cfc8 0%, #c0bbb4 100%);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .hero-photo-placeholder-inner {
-    text-align: center; color: var(--text-muted);
-  }
-  .hero-photo-placeholder-inner .label {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-    text-transform: uppercase; margin-top: 8px;
-    color: var(--text-light);
-  }
-
-  /* Quick links bar */
-  .hero-quicklinks {
-    display: flex; align-items: center; justify-content: center;
-    gap: 8px; padding: 16px 0 20px;
-    font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .hero-quicklinks a {
-    color: var(--text); text-decoration: underline; text-underline-offset: 3px;
-    transition: color 0.15s;
-  }
-  .hero-quicklinks a:hover { color: var(--accent); }
-  .hero-quicklinks .sep { color: var(--border); }
-
-  /* Status pill */
-  .hero-status {
-    display: inline-flex; align-items: center; gap: 7px;
-    font-size: 11px; font-weight: 700; color: var(--accent);
+  /* Subtle scroll hint */
+  .hero-scroll {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(0,0,0,0.35); font-size: 10px; font-weight: 700;
     letter-spacing: 0.12em; text-transform: uppercase;
-    margin-bottom: 20px;
+    animation: bounce 2s ease-in-out infinite;
   }
-  .hero-status::before {
-    content: ''; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); display: block;
-    animation: pulse 2s ease-in-out infinite;
-  }
+  .hero-scroll svg { width: 20px; height: 20px; stroke: rgba(0,0,0,0.35); }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
 
   .btn-primary { font-size: 13px; font-weight: 700; color: #fff; background: var(--accent); border: none; border-radius: 4px; padding: 13px 30px; text-decoration: none; display: inline-block; transition: all 0.15s; letter-spacing: 0.01em; }
@@ -258,41 +198,9 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-inner">
-
-    <div class="hero-status">Open to Work · Social Media &amp; Brand</div>
-
-    <div class="hero-name-row">
-      <h1 class="hero-name">Miguel<br>Romero</h1>
-      <div class="hero-meta">
-        <div class="hero-meta-title">Full Stack Marketer</div>
-        <div class="hero-meta-tags">GTM <span>|</span> Content <span>|</span> Social <span>|</span> Community <span>|</span> AI</div>
-      </div>
-    </div>
-
-    <div class="hero-photos">
-      <div class="hero-photo">
-        <img src="image06.png" alt="Miguel Romero Jr" />
-      </div>
-      <div class="hero-photo">
-        <div class="hero-photo-placeholder">
-          <div class="hero-photo-placeholder-inner">
-            <div style="font-size:28px; opacity:0.3">✦</div>
-            <div class="label">romerojr.com</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-quicklinks">
-      Quick Links:
-      <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
-      <span class="sep">|</span>
-      <a href="#" target="_blank">Resume</a>
-      <span class="sep">|</span>
-      <a href="#work">Portfolio</a>
-    </div>
-
+  <img src="image06.png" alt="Miguel Romero Jr" />
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
   </div>
 </section>
 
@@ -307,7 +215,7 @@
         <p class="about-body">A computer scientist who took his pragmatic mindset and dove into the world of marketing and communications. I've collaborated with cross-functional teams across diverse organizations, leading some of the most ambitious campaigns — regardless of budget. I believe that exceptional marketing stems from powerful narratives and thoughtful, strategic design.</p>
         <div class="about-actions">
           <a href="#" class="btn-primary">Resume (PDF) ↗</a>
-          <a href="mailto:miguel@romerojr.com" class="btn-ghost">Get in Touch</a>
+          <a href="/cdn-cgi/l/email-protection#98f5f1ffedfdf4d8eaf7f5fdeaf7f2eab6fbf7f5" class="btn-ghost">Get in Touch</a>
         </div>
       </div>
     </div>
@@ -334,7 +242,7 @@
     <div class="section-eyebrow">Brands</div>
     <div class="section-title">Brands I've Worked With</div>
     <div class="brands-wrap fade-up">
-      <img src="Screenshot_2026-04-03_at_9_20_13_PM.png" alt="Brands including Joyn, Nifty Gateway, Gemini, Agoric, The Weeknd, Eminem, Steve Aoki, Paris Hilton, Kadena, HP, Raspberry Pi, Code.org, Adim, OKX, StormX, Horizen" />
+      <img src="image01.png" alt="Brands including Joyn, Nifty Gateway, Gemini, Agoric, The Weeknd, Eminem, Steve Aoki, Paris Hilton, Kadena, HP, Raspberry Pi, Code.org, Adim, OKX, StormX, Horizen" />
     </div>
   </div>
 </section>
@@ -460,7 +368,7 @@
         </blockquote>
       </div>
     </div>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 </section>
 
@@ -556,16 +464,29 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <span>miguel@romerojr.com</span>
+  <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9cf1f5fbe9f9f0dceef3f1f9eef3f6eeb2fff3f1">[email&#160;protected]</a></span>
   <div class="footer-links">
     <a href="https://twitter.com/romerojr__" target="_blank">X / Twitter</a>
     <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
-    <a href="mailto:miguel@romerojr.com">Email</a>
+    <a href="/cdn-cgi/l/email-protection#bfd2d6d8cadad3ffcdd0d2dacdd0d5cd91dcd0d2">Email</a>
     <a href="https://romerojr.com" target="_blank">Portfolio</a>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Header transitions from photo-grey to page-grey after hero
+  const header = document.querySelector('.header');
+  const hero   = document.querySelector('.hero');
+  function updateHeader() {
+    const past = window.scrollY > (hero ? hero.offsetHeight - 80 : 300);
+    header.style.background = past
+      ? 'rgba(240,237,232,0.97)'
+      : 'rgba(184,180,174,0.88)';
+    header.style.borderBottomColor = past ? 'var(--border)' : 'rgba(0,0,0,0.06)';
+  }
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
+
   // Fade-up on scroll
   const fadeObs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); } });
@@ -583,13 +504,4 @@
   const statsEl = document.querySelector('.stats');
   if (statsEl) {
     new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return;
-      targets.forEach(({ el, target, suffix }) => {
-        let v = 0; const step = 16; const inc = target / (1200 / step);
-        const t = setInterval(() => { v += inc; if (v >= target) { el.textContent = target + suffix; clearInterval(t); } else { el.textContent = Math.floor(v) + suffix; } }, step);
-      });
-    }, { threshold: 0.3 }).observe(statsEl);
-  }
-</script>
-</body>
-</html>
+      if
