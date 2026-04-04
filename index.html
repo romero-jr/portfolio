@@ -13,17 +13,17 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #f0ede8;
-    --bg-section: #e6e2dc;
-    --bg-card: #faf9f7;
+    --bg: #b8b4ae;
+    --bg-section: #b0aca6;
+    --bg-card: #c2beb9;
     --bg-dark: #141414;
     --accent: #B71622;
-    --accent-light: rgba(183,22,34,0.08);
+    --accent-light: rgba(183,22,34,0.1);
     --accent-hover: #9a1019;
     --text: #111111;
-    --text-muted: #5a5a5a;
-    --text-light: #999999;
-    --border: #d0cbc3;
+    --text-muted: #3a3835;
+    --text-light: #6b6762;
+    --border: #a09c96;
     --font: 'DM Sans', sans-serif;
     --font-serif: 'DM Serif Display', serif;
   }
@@ -34,13 +34,13 @@
   /* ── HEADER ── */
   .header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(184,180,174,0.92); backdrop-filter: blur(12px);
+    background: rgba(184,180,174,0.95); backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(0,0,0,0.08);
     padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px;
   }
   .header-logo { font-family: var(--font-serif); font-size: 20px; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
   .header-nav { display: flex; gap: 32px; }
-  .header-nav a { font-size: 12px; color: rgba(0,0,0,0.55); text-decoration: none; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.15s; }
+  .header-nav a { font-size: 12px; color: rgba(0,0,0,0.5); text-decoration: none; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.15s; }
   .header-nav a:hover { color: var(--text); }
 
   /* ── HERO ── */
@@ -335,19 +335,6 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Header transitions from photo-grey to page-grey after hero
-  const header = document.querySelector('.header');
-  const hero   = document.querySelector('.hero');
-  function updateHeader() {
-    const past = window.scrollY > (hero ? hero.offsetHeight - 80 : 300);
-    header.style.background = past
-      ? 'rgba(240,237,232,0.97)'
-      : 'rgba(184,180,174,0.88)';
-    header.style.borderBottomColor = past ? 'var(--border)' : 'rgba(0,0,0,0.06)';
-  }
-  window.addEventListener('scroll', updateHeader, { passive: true });
-  updateHeader();
-
   // Fade-up on scroll
   const fadeObs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); } });
