@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miguel Romero Jr — Portfolio</title>
+<meta property="og:title" content="Miguel Romero Jr — Portfolio" />
+<meta property="og:description" content="Social Media. Terminally Online. Built for impact." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f0ede8;
+    --bg-section: #e6e2dc;
+    --bg-card: #faf9f7;
+    --bg-dark: #141414;
+    --accent: #B71622;
+    --accent-light: rgba(183,22,34,0.08);
+    --accent-hover: #9a1019;
+    --text: #111111;
+    --text-muted: #5a5a5a;
+    --text-light: #999999;
+    --border: #d0cbc3;
+    --font: 'DM Sans', sans-serif;
+    --font-serif: 'DM Serif Display', serif;
+  }
+  html { overflow-y: scroll; scroll-behavior: smooth; }
+  html, body { min-height: 100%; background: var(--bg); color: var(--text); font-family: var(--font); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+  body { padding-top: 56px; }
+
+  /* ── HEADER ── */
+  .header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(240,237,232,0.95); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px;
+  }
+  .header-logo { font-family: var(--font-serif); font-size: 20px; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+  .header-nav { display: flex; gap: 32px; }
+  .header-nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.15s; }
+  .header-nav a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--bg); padding: 64px 64px 0;
+    position: relative; overflow: hidden;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; }
+
+  /* Big name row */
+  .hero-name-row {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 24px; margin-bottom: 0;
+  }
+  .hero-name {
+    font-family: var(--font); font-weight: 900;
+    font-size: clamp(72px, 11vw, 160px);
+    color: var(--text); line-height: 0.9; letter-spacing: -0.04em;
+    text-transform: uppercase; flex-shrink: 0;
+  }
+  .hero-meta {
+    padding-bottom: 12px; text-align: right; flex-shrink: 0;
+  }
+  .hero-meta-title {
+    font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.4;
+  }
+  .hero-meta-tags {
+    font-size: 13px; color: var(--text-muted); margin-top: 4px;
+  }
+  .hero-meta-tags span { color: var(--accent); }
+
+  /* Photo strip */
+  .hero-photos {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 12px; margin-top: 24px;
+    height: 360px;
+  }
+  .hero-photo {
+    border-radius: 8px 8px 0 0; overflow: hidden;
+    background: #c8c4be;
+  }
+  .hero-photo img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    display: block;
+  }
+  .hero-photo-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #d4cfc8 0%, #c0bbb4 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-photo-placeholder-inner {
+    text-align: center; color: var(--text-muted);
+  }
+  .hero-photo-placeholder-inner .label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-top: 8px;
+    color: var(--text-light);
+  }
+
+  /* Quick links bar */
+  .hero-quicklinks {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; padding: 16px 0 20px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .hero-quicklinks a {
+    color: var(--text); text-decoration: underline; text-underline-offset: 3px;
+    transition: color 0.15s;
+  }
+  .hero-quicklinks a:hover { color: var(--accent); }
+  .hero-quicklinks .sep { color: var(--border); }
+
+  /* Status pill */
+  .hero-status {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 11px; font-weight: 700; color: var(--accent);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero-status::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); display: block;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
+
+  .btn-primary { font-size: 13px; font-weight: 700; color: #fff; background: var(--accent); border: none; border-radius: 4px; padding: 13px 30px; text-decoration: none; display: inline-block; transition: all 0.15s; letter-spacing: 0.01em; }
+  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(183,22,34,0.3); }
+  .btn-ghost { font-size: 13px; font-weight: 500; color: var(--text-muted); border: 1px solid var(--border); border-radius: 4px; padding: 13px 30px; text-decoration: none; display: inline-block; transition: all 0.15s; }
+  .btn-ghost:hover { border-color: var(--text); color: var(--text); }
+
+  /* ── ABOUT ME ── */
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+  .about-headline {
+    font-family: var(--font); font-weight: 900; font-size: clamp(36px, 5vw, 64px);
+    text-transform: uppercase; color: var(--text); line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .about-headline em { color: var(--accent); font-style: normal; }
+  .about-body { font-size: 17px; color: var(--text-muted); line-height: 1.75; margin-bottom: 32px; }
+  .about-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* ── SHARED SECTION STYLES ── */
+  .section { padding: 80px 64px; }
+  .section--light { background: var(--bg); }
+  .section--alt { background: var(--bg-section); }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .section-title { font-family: var(--font-serif); font-size: clamp(22px, 2.8vw, 36px); color: var(--text); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 40px; }
+
+  /* ── STATS ── */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .stat { background: var(--bg-card); border: 1px solid var(--border); padding: 28px 24px; border-radius: 6px; }
+  .stat-value { font-family: var(--font-serif); font-size: 44px; color: var(--accent); display: block; margin-bottom: 6px; letter-spacing: -0.03em; line-height: 1; }
+  .stat-value.small { font-family: var(--font); font-size: 13px; font-weight: 700; padding-top: 8px; color: var(--text); line-height: 1.4; }
+  .stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; line-height: 1.5; }
+  .stat-label a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
+
+  /* ── SHARED LIST ROW (used for both clients + experience) ── */
+  .row-list { display: flex; flex-direction: column; gap: 2px; }
+  .row-item {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px;
+    padding: 24px 28px; display: grid; grid-template-columns: 32px 180px 1fr auto auto;
+    gap: 16px; align-items: start; transition: all 0.15s;
+  }
+  .row-item:hover { background: #fff; border-color: var(--accent); }
+  .row-num { color: var(--text-light); font-size: 11px; font-weight: 600; padding-top: 3px; }
+  .row-company { color: var(--text); font-weight: 800; font-size: 14px; padding-top: 3px; line-height: 1.3; }
+  .row-role-title { color: var(--text); font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .row-period { color: var(--text-muted); font-size: 12px; white-space: nowrap; padding-top: 3px; }
+  .pill { display: inline-block; font-size: 10px; padding: 3px 10px; background: var(--accent-light); color: var(--accent); border: 1px solid rgba(183,22,34,0.2); text-transform: uppercase; letter-spacing: 0.06em; border-radius: 3px; font-weight: 700; white-space: nowrap; }
+  .row-desc { font-size: 12px; color: var(--text-muted); line-height: 1.8; list-style: none; }
+  .row-desc li { padding-left: 16px; position: relative; margin-bottom: 4px; }
+  .row-desc li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 10px; top: 3px; }
+
+  /* ── BRANDS ── */
+  .brands-wrap {
+    border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+    background: var(--bg-card);
+  }
+  .brands-wrap img {
+    width: 100%; display: block;
+    filter: contrast(1.05);
+    transition: filter 0.2s;
+  }
+  .brands-wrap:hover img { filter: contrast(1.1); }
+
+  /* ── SKILLS ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .skill-card { background: var(--bg-card); border: 1px solid var(--border); padding: 28px 24px; border-radius: 6px; }
+  .skill-category { font-size: 11px; font-weight: 800; color: var(--text); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); display: block; }
+  .skill-list { font-size: 13px; color: var(--text-muted); line-height: 2.2; }
+
+  /* ── WORK ── */
+  .work-grid { display: flex; flex-direction: column; gap: 16px; }
+  .work-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 32px; }
+  .work-tag { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
+  .work-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
+  .work-desc { font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; }
+
+  /* ── TWEETS ── */
+  .tweet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+  /* ── FOOTER ── */
+  .footer { background: var(--bg-dark); padding: 32px 64px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.35); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.15s; }
+  .footer-links a:hover { color: #fff; }
+
+  /* ── ANIMATIONS ── */
+  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .header { padding: 0 20px; } .header-nav { gap: 16px; }
+    .hero { padding: 40px 20px 0; }
+    .hero-name { font-size: clamp(56px, 14vw, 100px); }
+    .hero-name-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .hero-meta { text-align: left; padding-bottom: 0; }
+    .hero-photos { height: 240px; }
+    .about-inner { grid-template-columns: 1fr; gap: 32px; }
+    .section { padding: 56px 20px; }
+    .stats, .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .tweet-grid { grid-template-columns: 1fr; }
+    .row-item { grid-template-columns: 1fr; gap: 6px; }
+    .footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
+    .footer-links { justify-content: center; flex-wrap: wrap; }
+  }
+  @media (max-width: 560px) {
+    .stats, .skills-grid { grid-template-columns: 1fr; }
+    .hero-photos { grid-template-columns: 1fr; height: auto; }
+    .hero-photos .hero-photo:last-child { display: none; }
+    .hero-photo { height: 280px; border-radius: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <a href="#" class="header-logo">MRJ</a>
+  <nav class="header-nav">
+    <a href="#about">About</a>
+    <a href="#clients">Clients</a>
+    <a href="#work">Work</a>
+    <a href="#wins">Wins</a>
+    <a href="#experience">Experience</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="hero-status">Open to Work · Social Media &amp; Brand</div>
+
+    <div class="hero-name-row">
+      <h1 class="hero-name">Miguel<br>Romero</h1>
+      <div class="hero-meta">
+        <div class="hero-meta-title">Full Stack Marketer</div>
+        <div class="hero-meta-tags">GTM <span>|</span> Content <span>|</span> Social <span>|</span> Community <span>|</span> AI</div>
+      </div>
+    </div>
+
+    <div class="hero-photos">
+      <div class="hero-photo">
+        <img src="image06.png" alt="Miguel Romero Jr" />
+      </div>
+      <div class="hero-photo">
+        <div class="hero-photo-placeholder">
+          <div class="hero-photo-placeholder-inner">
+            <div style="font-size:28px; opacity:0.3">✦</div>
+            <div class="label">romerojr.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-quicklinks">
+      Quick Links:
+      <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
+      <span class="sep">|</span>
+      <a href="#" target="_blank">Resume</a>
+      <span class="sep">|</span>
+      <a href="#work">Portfolio</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT ME -->
+<section class="section section--light" id="about">
+  <div class="section-inner">
+    <div class="about-inner fade-up">
+      <div>
+        <div class="about-headline">About<br><em>Me.</em></div>
+      </div>
+      <div>
+        <p class="about-body">A computer scientist who took his pragmatic mindset and dove into the world of marketing and communications. I've collaborated with cross-functional teams across diverse organizations, leading some of the most ambitious campaigns — regardless of budget. I believe that exceptional marketing stems from powerful narratives and thoughtful, strategic design.</p>
+        <div class="about-actions">
+          <a href="#" class="btn-primary">Resume (PDF) ↗</a>
+          <a href="mailto:miguel@romerojr.com" class="btn-ghost">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section section--alt" id="stats">
+  <div class="section-inner">
+    <div class="section-eyebrow">At a Glance</div>
+    <div class="section-title">By the Numbers</div>
+    <div class="stats fade-up">
+      <div class="stat"><span class="stat-value">10+</span><span class="stat-label">Years in social, community & brand</span></div>
+      <div class="stat"><span class="stat-value">5+</span><span class="stat-label">Companies incl. Gemini, Agoric, Nifty Gateway</span></div>
+      <div class="stat"><span class="stat-value">50+</span><span class="stat-label">Launches, campaigns & community programs</span></div>
+      <div class="stat"><span class="stat-value small">Built with Astra</span><span class="stat-label">Personal AI stack — <a href="https://medium.com/@romerojr/i-built-my-own-ai-stack-i-called-it-astra-92c5f9c2c074" target="_blank">learn more</a></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="section section--light" id="brands">
+  <div class="section-inner">
+    <div class="section-eyebrow">Brands</div>
+    <div class="section-title">Brands I've Worked With</div>
+    <div class="brands-wrap fade-up">
+      <img src="Screenshot_2026-04-03_at_9_20_13_PM.png" alt="Brands including Joyn, Nifty Gateway, Gemini, Agoric, The Weeknd, Eminem, Steve Aoki, Paris Hilton, Kadena, HP, Raspberry Pi, Code.org, Adim, OKX, StormX, Horizen" />
+    </div>
+  </div>
+</section>
+
+<!-- WHO I WORKED WITH -->
+<section class="section section--alt" id="clients">
+  <div class="section-inner">
+    <div class="section-eyebrow">Companies</div>
+    <div class="section-title">Who I've Worked With</div>
+    <div class="row-list fade-up">
+
+      <div class="row-item">
+        <span class="row-num">01</span>
+        <span class="row-company">Agoric</span>
+        <div>
+          <div class="row-role-title">Community Marketing Lead</div>
+          <ul class="row-desc">
+            <li>B2B blockchain protocol — co-owned social strategy across X, LinkedIn, and community channels, driving 40% engagement growth</li>
+            <li>Built AI-native content workflows that 3x'd output and cut production time 70%</li>
+            <li>Supported executive social profiles — expanded leadership reach 45% through ghostwritten posts and strategic positioning</li>
+          </ul>
+        </div>
+        <span class="row-period">Sep 2024–Mar 2026</span>
+        <span class="pill">Full-time</span>
+      </div>
+
+      <div class="row-item">
+        <span class="row-num">02</span>
+        <span class="row-company">Joyn</span>
+        <div>
+          <div class="row-role-title">Marketing Lead</div>
+          <ul class="row-desc">
+            <li>Creator economy platform — ran all social channels, launched 3 products, doubled engagement with written content and campaign assets</li>
+            <li>Managed community monitoring and issue routing — reduced support volume 30% via proactive community management</li>
+            <li>Built coordinated launch plans activating internal teams, influencer partners, and paid campaigns</li>
+          </ul>
+        </div>
+        <span class="row-period">Apr 2023–Mar 2024</span>
+        <span class="pill">Full-time</span>
+      </div>
+
+      <div class="row-item">
+        <span class="row-num">03</span>
+        <span class="row-company">Gemini</span>
+        <div>
+          <div class="row-role-title">Marketing Manager</div>
+          <ul class="row-desc">
+            <li>13M+ user fintech brand — promoted from Specialist to Manager in 6 months, contributing to 30% revenue growth</li>
+            <li>Managed $50K–$100K/mo budget across paid, PR, and creative with 6+ agency partners</li>
+            <li>Co-owned LinkedIn, X, Instagram, and YouTube — established social metrics frameworks and reported performance insights</li>
+          </ul>
+        </div>
+        <span class="row-period">Feb 2021–Aug 2022</span>
+        <span class="pill">Full-time</span>
+      </div>
+
+      <div class="row-item">
+        <span class="row-num">04</span>
+        <span class="row-company">Nifty Gateway</span>
+        <div>
+          <div class="row-role-title">Social Media Specialist</div>
+          <ul class="row-desc">
+            <li>Leading NFT marketplace under Gemini — produced memes, written content, and social assets for a 600K+ audience</li>
+            <li>Produced GTM launch video for mobile app driving awareness and adoption at scale</li>
+          </ul>
+        </div>
+        <span class="row-period">Feb 2021–Aug 2022</span>
+        <span class="pill">Full-time</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section section--light">
+  <div class="section-inner">
+    <div class="section-eyebrow">Competencies</div>
+    <div class="section-title">Skills</div>
+    <div class="skills-grid fade-up">
+      <div class="skill-card">
+        <div class="skill-category">Social & Community</div>
+        <div class="skill-list">X / Twitter<br>Reddit<br>LinkedIn<br>Instagram<br>Community Moderation</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">Strategy & Growth</div>
+        <div class="skill-list">GTM Strategy<br>Brand Positioning<br>Launch Playbooks<br>Audience Development<br>Performance Reporting</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">Content & Copy</div>
+        <div class="skill-list">Brand Voice<br>Social Copywriting<br>Cultural Fluency<br>Editorial Calendars<br>Campaign Messaging</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">Tools & AI</div>
+        <div class="skill-list">Claude / ChatGPT<br>Midjourney / Sora<br>HubSpot / Mailchimp<br>Google Analytics<br>Figma / Premiere</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL WINS -->
+<section class="section section--alt" id="wins">
+  <div class="section-inner">
+    <div class="section-eyebrow">Selected Posts</div>
+    <div class="section-title">Favorite Social Media Wins</div>
+    <div class="tweet-grid fade-up">
+      <div>
+        <blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">1/ Today we are excited to introduce ✨Publishers✨<br>A new platform that will enable people to curate their own drops on Nifty Gateway. <a href="https://t.co/SUsOUhdzS0">pic.twitter.com/SUsOUhdzS0</a></p>
+          &mdash; Nifty Gateway Studio (@niftygateway) <a href="https://twitter.com/niftygateway/status/1565324386323890178?ref_src=twsrc%5Etfw">September 1, 2022</a>
+        </blockquote>
+      </div>
+      <div>
+        <blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">The Agoric Orchestration API is now LIVE on Mainnet 🚀<br><br>Say goodbye to complex, multi-step chaos and witness the power of one-click, cross-chain innovation! <a href="https://t.co/UllUHygaJL">pic.twitter.com/UllUHygaJL</a></p>
+          &mdash; Agoric (@agoric) <a href="https://twitter.com/agoric/status/1843713327392010725?ref_src=twsrc%5Etfw">October 8, 2024</a>
+        </blockquote>
+      </div>
+      <div>
+        <blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">★ Introducing our newest feature, Composer!<br><br>Your journey starts here ↓<a href="https://t.co/Rk81N0YHca">https://t.co/Rk81N0YHca</a> <a href="https://t.co/wQwqOZ74kG">pic.twitter.com/wQwqOZ74kG</a></p>
+          &mdash; Joyn (@joynxyz) <a href="https://twitter.com/joynxyz/status/1688569550562803713?ref_src=twsrc%5Etfw">August 7, 2023</a>
+        </blockquote>
+      </div>
+    </div>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section section--light" id="work">
+  <div class="section-inner">
+    <div class="section-eyebrow">Portfolio</div>
+    <div class="section-title">Selected Work</div>
+    <div class="work-grid fade-up">
+      <div class="work-card">
+        <div class="work-tag">Product Launch</div>
+        <div class="work-title">Joyn — Product Launch Live Stream</div>
+        <div class="work-desc">Live stream amassed 2K live viewers on X and 10K+ views lifetime for new product launch at Joyn.</div>
+        <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
+          <iframe src="https://www.youtube.com/embed/80GqoOiyNsE" title="Joyn Product Launch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-tag">Event Coverage</div>
+        <div class="work-title">Agoric — Live Event Coverage</div>
+        <div class="work-desc">Live conference coverage streamed to the Agoric community, driving real-time engagement across Web3 developer audiences.</div>
+        <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
+          <iframe src="https://www.youtube.com/embed/0acR0FB9ZGk" title="Agoric Event Coverage" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-tag">GTM Launch Video</div>
+        <div class="work-title">Nifty Gateway — Mobile App Launch</div>
+        <div class="work-desc">GTM launch video produced for Nifty Gateway's mobile app release, driving awareness and adoption across a 600K+ audience.</div>
+        <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
+          <iframe src="https://www.youtube.com/embed/1uY-vv7KNW0" title="Nifty Gateway Mobile Launch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section section--alt" id="experience">
+  <div class="section-inner">
+    <div class="section-eyebrow">Background</div>
+    <div class="section-title">Recent Experience</div>
+    <div class="row-list fade-up">
+
+      <div class="row-item">
+        <span class="row-num">01</span>
+        <span class="row-company">Agoric</span>
+        <div>
+          <div class="row-role-title">Community Marketing Lead</div>
+          <ul class="row-desc">
+            <li>Co-owned social strategy and content across X, LinkedIn, and community channels — defined voice, content pillars, and calendar cadence that drove 40% engagement growth</li>
+            <li>Supported executive social profiles with reactive opportunities, ghostwritten posts, and strategic positioning — expanding leadership reach 45%</li>
+            <li>Built AI-native content workflows that 3x'd output and cut production time 70% — tracked social metrics weekly and iterated on messaging, formats, and channel mix</li>
+          </ul>
+        </div>
+        <span class="row-period">Sep 2024–Mar 2026</span>
+        <span class="pill">Full-time</span>
+      </div>
+
+      <div class="row-item">
+        <span class="row-num">02</span>
+        <span class="row-company">Joyn</span>
+        <div>
+          <div class="row-role-title">Marketing Lead</div>
+          <ul class="row-desc">
+            <li>Co-owned all social channels — produced written content, visuals, and partnered with designers on higher-lift assets for product launches that doubled engagement</li>
+            <li>Managed community monitoring and issue routing — flagged and escalated social media risks in real time while reducing support volume 30%</li>
+            <li>Built launch plans for 3 product releases — activating internal teams, influencer partners, and paid campaigns in coordinated rollouts</li>
+          </ul>
+        </div>
+        <span class="row-period">Apr 2023–Mar 2024</span>
+        <span class="pill">Full-time</span>
+      </div>
+
+      <div class="row-item">
+        <span class="row-num">03</span>
+        <span class="row-company">Gemini &amp; Nifty Gateway</span>
+        <div>
+          <div class="row-role-title">Marketing Manager</div>
+          <ul class="row-desc">
+            <li>Promoted from Social Media Specialist to Marketing Manager in 6 months — co-owned LinkedIn, X, Instagram, and YouTube for a 13M+ user fintech brand, contributing to 30% revenue growth</li>
+            <li>Managed 6+ agency partners and a $50K–$100K monthly budget across paid, PR, and creative — established social metrics frameworks and reported performance insights</li>
+            <li>Produced written content, memes, and designed visuals — with the range to write a clever skit and the judgment to know when the legal team needs a heads up</li>
+          </ul>
+        </div>
+        <span class="row-period">Feb 2021–Aug 2022</span>
+        <span class="pill">Full-time</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span>miguel@romerojr.com</span>
+  <div class="footer-links">
+    <a href="https://twitter.com/romerojr__" target="_blank">X / Twitter</a>
+    <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
+    <a href="mailto:miguel@romerojr.com">Email</a>
+    <a href="https://romerojr.com" target="_blank">Portfolio</a>
+  </div>
+</footer>
+
+<script>
+  // Fade-up on scroll
+  const fadeObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+
+  // Count-up for stats
+  const statEls = document.querySelectorAll('.stat-value:not(.small)');
+  const targets = [];
+  statEls.forEach(el => {
+    const raw = el.textContent.trim();
+    const num = parseInt(raw);
+    if (!isNaN(num)) { targets.push({ el, target: num, suffix: raw.replace(String(num), '') }); el.textContent = '0' + raw.replace(String(num), ''); }
+  });
+  const statsEl = document.querySelector('.stats');
+  if (statsEl) {
+    new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      targets.forEach(({ el, target, suffix }) => {
+        let v = 0; const step = 16; const inc = target / (1200 / step);
+        const t = setInterval(() => { v += inc; if (v >= target) { el.textContent = target + suffix; clearInterval(t); } else { el.textContent = Math.floor(v) + suffix; } }, step);
+      });
+    }, { threshold: 0.3 }).observe(statsEl);
+  }
+</script>
+</body>
+</html>
