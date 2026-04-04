@@ -14,16 +14,16 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --bg: #E6E6E6;
-    --bg-section: #E6E6E6;
-    --bg-card: #c2beb9;
+    --bg-section: #dcdcdc;
+    --bg-card: #ebebeb;
     --bg-dark: #141414;
     --accent: #B71622;
     --accent-light: rgba(183,22,34,0.1);
     --accent-hover: #9a1019;
     --text: #111111;
-    --text-muted: #3a3835;
-    --text-light: #6b6762;
-    --border: #a09c96;
+    --text-muted: #4a4a4a;
+    --text-light: #7a7a7a;
+    --border: #cccccc;
     --font: 'DM Sans', sans-serif;
     --font-serif: 'DM Serif Display', serif;
   }
@@ -34,7 +34,7 @@
   /* ── HEADER ── */
   .header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(184,180,174,0.95); backdrop-filter: blur(12px);
+    background: rgba(230,230,230,0.95); backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(0,0,0,0.08);
     padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px;
   }
@@ -45,7 +45,7 @@
 
   /* ── HERO ── */
   .hero {
-    background: #b8b4ae;
+    background: #E6E6E6;
     position: relative;
     height: calc(65vh - 56px);
     display: flex; align-items: center; justify-content: center;
@@ -152,7 +152,7 @@
   .tweet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
   /* ── FOOTER ── */
-  .footer { background: #a09c96; padding: 32px 64px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(0,0,0,0.5); border-top: 1px solid rgba(0,0,0,0.1); }
+  .footer { background: #d8d8d8; padding: 32px 64px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(0,0,0,0.5); border-top: 1px solid rgba(0,0,0,0.1); }
   .footer-links { display: flex; gap: 24px; }
   .footer-links a { color: rgba(0,0,0,0.5); text-decoration: none; transition: color 0.15s; }
   .footer-links a:hover { color: #111; }
@@ -325,16 +325,16 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <span>miguel@romerojr.com</span>
+  <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f29f9b9587979eb2809d9f97809d9880dc919d9f">[email&#160;protected]</a></span>
   <div class="footer-links">
     <a href="https://twitter.com/romerojr__" target="_blank">X / Twitter</a>
     <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
-    <a href="mailto:miguel@romerojr.com">Email</a>
+    <a href="/cdn-cgi/l/email-protection#c5a8aca2b0a0a985b7aaa8a0b7aaafb7eba6aaa8">Email</a>
     <a href="https://romerojr.com" target="_blank">Portfolio</a>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Fade-up on scroll
   const fadeObs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); } });
@@ -347,9 +347,4 @@
   statEls.forEach(el => {
     const raw = el.textContent.trim();
     const num = parseInt(raw);
-    if (!isNaN(num)) { targets.push({ el, target: num, suffix: raw.replace(String(num), '') }); el.textContent = '0' + raw.replace(String(num), ''); }
-  });
-  const statsEl = document.querySelector('.stats');
-  if (statsEl) {
-    new IntersectionObserver(([entry]) => {
-      if
+    if
