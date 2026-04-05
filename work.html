@@ -99,8 +99,8 @@
   }
   .creative-card:hover { border-color: var(--accent); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
   .creative-img-wrap { overflow: hidden; background: #1a1a1a; }
-  .creative-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
-  .creative-card:hover .creative-img-wrap img { transform: scale(1.02); }
+  .creative-img-wrap > img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .creative-card:hover .creative-img-wrap > img { transform: scale(1.02); }
   .creative-img-square { aspect-ratio: 1/1; }
   .creative-meta { padding: 20px 24px; }
   .creative-tag { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; }
@@ -116,11 +116,37 @@
   .tweet-grid > div { min-width: 0; overflow: hidden; }
 
   /* ── WORK ── */
-  .work-grid { display: flex; flex-direction: column; gap: 16px; }
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .work-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 32px; }
   .work-tag { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
   .work-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
   .work-desc { font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; }
+
+  /* ── CLICKABLE IMAGES ── */
+  .img-link { display: block; cursor: zoom-in; }
+  .joyn-gifs .img-link { display: block; width: 100%; height: 100%; }
+  .creative-img-wrap .img-link img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .creative-card:hover .img-link img { transform: scale(1.02); }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 90vw; max-height: 90vh;
+    object-fit: contain; border-radius: 6px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.8);
+  }
+  .lightbox-close {
+    position: fixed; top: 20px; right: 28px;
+    font-size: 32px; color: #fff; cursor: pointer;
+    line-height: 1; opacity: 0.7; transition: opacity 0.15s;
+    background: none; border: none; font-family: var(--font);
+  }
+  .lightbox-close:hover { opacity: 1; }
 
   /* ── FOOTER ── */
   .footer { background: var(--bg-dark); padding: 32px 64px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.35); }
@@ -135,6 +161,8 @@
     .section { padding: 56px 20px; }
     .tweet-grid { grid-template-columns: repeat(2, 1fr); }
     .creative-grid-wide, .creative-grid-square { grid-template-columns: 1fr; }
+    .work-grid { grid-template-columns: 1fr; }
+    .joyn-gifs { grid-template-columns: 1fr 1fr; }
     .footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
     .footer-links { justify-content: center; flex-wrap: wrap; }
   }
@@ -240,7 +268,9 @@
     <div class="creative-grid-wide">
       <div class="creative-card">
         <div class="creative-img-wrap">
-          <img src="kadenawindows.jpg" alt="Kadena Chainweaver UI" />
+          <a class="img-link" href="#" onclick="openLightbox('kadenawindows.jpg');return false;">
+            <img src="kadenawindows.jpg" alt="Kadena Chainweaver UI" />
+          </a>
         </div>
         <div class="creative-meta">
           <span class="creative-tag">Product UI / Editorial</span>
@@ -250,7 +280,9 @@
       </div>
       <div class="creative-card">
         <div class="creative-img-wrap">
-          <img src="odosemail.jpg" alt="ODOS Email Newsletter" />
+          <a class="img-link" href="#" onclick="openLightbox('odosemail.jpg');return false;">
+            <img src="odosemail.jpg" alt="ODOS Email Newsletter" />
+          </a>
         </div>
         <div class="creative-meta">
           <span class="creative-tag">Email Marketing</span>
@@ -265,13 +297,19 @@
       <div class="creative-card creative-card--joyn" style="grid-column: 1 / -1;">
         <div class="joyn-gifs">
           <div class="creative-img-wrap creative-img-square">
-            <img src="artplus.gif" alt="Joyn ART+ animated graphic" />
+            <a class="img-link" href="#" onclick="openLightbox('artplus.gif');return false;">
+              <img src="artplus.gif" alt="Joyn ART+ animated graphic" />
+            </a>
           </div>
           <div class="creative-img-wrap creative-img-square">
-            <img src="curatorfee.gif" alt="Joyn Open Curator Fee animated graphic" />
+            <a class="img-link" href="#" onclick="openLightbox('curatorfee.gif');return false;">
+              <img src="curatorfee.gif" alt="Joyn Open Curator Fee animated graphic" />
+            </a>
           </div>
           <div class="creative-img-wrap creative-img-square">
-            <img src="showcase.gif" alt="Joyn Showcase animated graphic" />
+            <a class="img-link" href="#" onclick="openLightbox('showcase.gif');return false;">
+              <img src="showcase.gif" alt="Joyn Showcase animated graphic" />
+            </a>
           </div>
         </div>
         <div class="creative-meta">
@@ -285,8 +323,35 @@
   </div>
 </section>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
 <!-- FOOTER -->
 <footer class="footer">
-  <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3dedad4c6d6dff3c1dcded6c1dcd9c19dd0dcde">[email&#160;protected]</a></span>
+  <span>miguel@romerojr.com</span>
   <div class="footer-links">
-    <a href="https://twitter.com/romerojr
+    <a href="https://twitter.com/romerojr__" target="_blank">X / Twitter</a>
+    <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
+    <a href="mailto:miguel@romerojr.com">Email</a>
+    <a href="index.html">Home</a>
+  </div>
+</footer>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.getElementById('lightbox-img').src = '';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
