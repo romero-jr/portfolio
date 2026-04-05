@@ -196,8 +196,36 @@
   .footer-links a { color: rgba(0,0,0,0.5); text-decoration: none; transition: color 0.15s; }
   .footer-links a:hover { color: #111; }
 
-  /* ── ANIMATIONS (disabled) ── */
-  .fade-up { opacity: 1; transform: none; }
+  /* ── PAGE TRANSITION ── */
+  .page-transition {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--accent);
+    transform: translateX(-100%);
+    transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+    pointer-events: none;
+  }
+  .page-transition.slide-in { transform: translateX(0); }
+  .page-transition.slide-out { transform: translateX(100%); }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* Staggered children — each direct child animates in sequence */
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .stagger-children.visible > *:nth-child(1) { transition-delay: 0.05s; }
+  .stagger-children.visible > *:nth-child(2) { transition-delay: 0.15s; }
+  .stagger-children.visible > *:nth-child(3) { transition-delay: 0.25s; }
+  .stagger-children.visible > *:nth-child(4) { transition-delay: 0.35s; }
+  .stagger-children.visible > * { opacity: 1; transform: translateY(0); }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 960px) {
@@ -207,19 +235,22 @@
     .work-cta-inner { grid-template-columns: 1fr; gap: 32px; }
     .about-inner { grid-template-columns: 1fr; gap: 32px; }
     .section { padding: 56px 20px; }
-    .stats, .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
     .tweet-grid { grid-template-columns: 1fr; }
     .row-item { grid-template-columns: 1fr; gap: 6px; }
     .footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
     .footer-links { justify-content: center; flex-wrap: wrap; }
   }
   @media (max-width: 560px) {
-    .stats, .skills-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
     .hero { height: 40vh; }
   }
 </style>
 </head>
 <body>
+
+<!-- PAGE TRANSITION OVERLAY -->
+<div class="page-transition" id="page-transition"></div>
 
 <!-- HEADER -->
 <header class="header">
@@ -242,7 +273,7 @@
 <!-- ABOUT ME -->
 <section class="section section--light" id="about">
   <div class="section-inner">
-    <div class="about-inner">
+    <div class="about-inner fade-up">
       <div>
         <div class="about-headline">About<br><em>Me.</em></div>
       </div>
@@ -250,23 +281,9 @@
         <p class="about-body">A computer scientist who took his pragmatic mindset and dove into the world of marketing and communications. I've collaborated with cross-functional teams across diverse organizations, leading some of the most ambitious campaigns — regardless of budget. I believe that exceptional marketing stems from powerful narratives and thoughtful, strategic design.</p>
         <div class="about-actions">
           <a href="#" class="btn-primary">Resume (PDF) ↗</a>
-          <a href="mailto:miguel@romerojr.com" class="btn-ghost">Get in Touch</a>
+          <a href="/cdn-cgi/l/email-protection#1e7377796b7b725e6c71737b6c71746c307d7173" class="btn-ghost">Get in Touch</a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="section section--alt" id="stats">
-  <div class="section-inner">
-    <div class="section-eyebrow">At a Glance</div>
-    <div class="section-title">By the Numbers</div>
-    <div class="stats">
-      <div class="stat"><span class="stat-value">10+</span><span class="stat-label">Years in social, community & brand</span></div>
-      <div class="stat"><span class="stat-value">5+</span><span class="stat-label">Companies incl. Gemini, Agoric, Nifty Gateway</span></div>
-      <div class="stat"><span class="stat-value">50+</span><span class="stat-label">Launches, campaigns & community programs</span></div>
-      <div class="stat"><span class="stat-value small">Built with Astra</span><span class="stat-label">My personal AI stack — a custom multi-model system I built to handle research, content drafting, and campaign workflows. <a href="https://medium.com/@romerojr/i-built-my-own-ai-stack-i-called-it-astra-92c5f9c2c074" target="_blank">Learn more →</a></span></div>
     </div>
   </div>
 </section>
@@ -276,7 +293,7 @@
   <div class="section-inner">
     <div class="section-eyebrow">Brands</div>
     <div class="section-title">Brands I've Worked With</div>
-    <div class="brands-wrap">
+    <div class="brands-wrap fade-up">
       <img src="image01.png" alt="Brands including Joyn, Nifty Gateway, Gemini, Agoric, The Weeknd, Eminem, Steve Aoki, Paris Hilton, Kadena, HP, Raspberry Pi, Code.org, Adim, OKX, StormX, Horizen" />
     </div>
   </div>
@@ -284,7 +301,7 @@
 
 <!-- THE WORK CTA -->
 <section class="work-cta-section">
-  <div class="work-cta-inner">
+  <div class="work-cta-inner fade-up">
     <div class="work-cta-left">
       <div class="work-cta-eyebrow">Visual Portfolio</div>
       <div class="work-cta-title">The<br><em>Work.</em></div>
@@ -301,7 +318,7 @@
   <div class="section-inner">
     <div class="section-eyebrow">Background</div>
     <div class="section-title">Recent Experience</div>
-    <div class="row-list">
+    <div class="row-list stagger-children">
 
       <div class="row-item">
         <span class="row-num">01</span>
@@ -348,32 +365,86 @@
         <span class="pill">Full-time</span>
       </div>
 
+      <div class="row-item">
+        <span class="row-num">04</span>
+        <span class="row-company">Kadena</span>
+        <div>
+          <div class="row-role-title">Marketing Manager</div>
+          <ul class="row-desc">
+            <li>Promoted from Community Manager to Marketing Manager in 1 year — grew social following from zero to 250K across X, LinkedIn, Reddit, and Facebook while managing all channel strategy and content production</li>
+            <li>Led end-to-end production of technical and non-technical content — AMAs, blog posts, graphics, and videos — and executed email marketing campaigns to a 30K subscriber list covering ecosystem updates and partnerships</li>
+            <li>Sourced blockchain industry co-marketing partners to build brand authority, coordinated UGC campaigns with Engineering to improve developer retention, and planned industry events including booth design, event spaces, and merchandise</li>
+          </ul>
+        </div>
+        <span class="row-period">Sep 2018–Jan 2021</span>
+        <span class="pill">Full-time</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section section--light">
+  <div class="section-inner">
+    <div class="section-eyebrow">Competencies</div>
+    <div class="section-title">Skills</div>
+    <div class="skills-grid stagger-children">
+      <div class="skill-card">
+        <div class="skill-category">Social & Community</div>
+        <div class="skill-list">X / Twitter<br>Reddit<br>LinkedIn<br>Instagram<br>Community Moderation<br>Discord / Telegram</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">Strategy & Growth</div>
+        <div class="skill-list">GTM Strategy<br>Brand Positioning<br>Launch Playbooks<br>Audience Development<br>Performance Reporting<br>Competitive Analysis</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">Content & Copy</div>
+        <div class="skill-list">Brand Voice<br>Social Copywriting<br>Cultural Fluency<br>Editorial Calendars<br>Campaign Messaging<br>Narrative Strategy</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">Tools & AI</div>
+        <div class="skill-list">Claude / ChatGPT<br>Midjourney / Comfy UI<br>HubSpot / Mailchimp<br>Google Analytics<br>Photoshop / Figma<br>Capcut / Premiere</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f29f9b9587979eb2809d9f97809d9880dc919d9f">[email&#160;protected]</a></span>
+  <span>miguel@romerojr.com</span>
   <div class="footer-links">
     <a href="https://twitter.com/romerojr__" target="_blank">X / Twitter</a>
     <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
-    <a href="/cdn-cgi/l/email-protection#c5a8aca2b0a0a985b7aaa8a0b7aaafb7eba6aaa8">Email</a>
+    <a href="mailto:miguel@romerojr.com">Email</a>
     <a href="https://romerojr.com" target="_blank">Portfolio</a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Fade-up on scroll
-  const fadeObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); } });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+<script>
+  // ── SCROLL ANIMATIONS ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+  document.querySelectorAll(".stagger-children").forEach(el => observer.observe(el));
 
-  // Count-up for stats
-  const statEls = document.querySelectorAll('.stat-value:not(.small)');
-  const targets = [];
-  statEls.forEach(el => {
-    const raw = el.textContent.trim();
-    const num = parseInt(raw);
-    if
+  // ── PAGE TRANSITION ──
+  const overlay = document.getElementById("page-transition");
+
+  // Intercept work.html link
+  document.querySelectorAll("a[href='work.html']").forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      overlay.classList.add("slide-in");
+      setTimeout(() => { window.location.href = "work.html"; }, 580);
+    });
+  });
+</script>
+</body>
+</html>
