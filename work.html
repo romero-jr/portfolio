@@ -83,6 +83,30 @@
   .section-eyebrow { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
   .section-title { font-family: var(--font-serif); font-size: clamp(22px, 2.8vw, 36px); color: var(--text); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 40px; }
 
+  /* ── CREATIVE GRID ── */
+  .creative-grid-wide {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-bottom: 16px;
+  }
+  .creative-grid-square {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .creative-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 6px; overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .creative-card:hover { border-color: var(--accent); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+  .creative-img-wrap { overflow: hidden; background: #1a1a1a; }
+  .creative-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .creative-card:hover .creative-img-wrap img { transform: scale(1.02); }
+  .creative-img-square { aspect-ratio: 1/1; }
+  .creative-meta { padding: 20px 24px; }
+  .creative-tag { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; }
+  .creative-title { font-size: 16px; font-weight: 700; color: var(--text); margin: 6px 0 6px; letter-spacing: -0.01em; }
+  .creative-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
   /* ── TWEETS ── */
   .tweet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
@@ -105,6 +129,7 @@
     .page-hero { padding: 48px 20px 40px; }
     .section { padding: 56px 20px; }
     .tweet-grid { grid-template-columns: repeat(2, 1fr); }
+    .creative-grid-wide, .creative-grid-square { grid-template-columns: 1fr; }
     .footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
     .footer-links { justify-content: center; flex-wrap: wrap; }
   }
@@ -118,6 +143,7 @@
   <nav class="header-nav">
     <a href="#wins">Social Wins</a>
     <a href="#videos">Videos</a>
+    <a href="#creative">Creative</a>
   </nav>
 </header>
 
@@ -196,6 +222,63 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CREATIVE WORK -->
+<section class="section section--light" id="creative">
+  <div class="section-inner">
+    <div class="section-eyebrow">Creative</div>
+    <div class="section-title">Design & Campaign Work</div>
+
+    <!-- Row 1: two wide landscape images -->
+    <div class="creative-grid-wide">
+      <div class="creative-card">
+        <div class="creative-img-wrap">
+          <img src="kadenawindows.jpg" alt="Kadena Chainweaver UI" />
+        </div>
+        <div class="creative-meta">
+          <span class="creative-tag">Product UI / Editorial</span>
+          <div class="creative-title">Kadena — Chainweaver Wallet</div>
+          <div class="creative-desc">Visual editorial showcasing the Chainweaver desktop wallet UI across key user flows — onboarding, key management, and transaction signing.</div>
+        </div>
+      </div>
+      <div class="creative-card">
+        <div class="creative-img-wrap">
+          <img src="odosemail.jpg" alt="ODOS Email Newsletter" />
+        </div>
+        <div class="creative-meta">
+          <span class="creative-tag">Email Marketing</span>
+          <div class="creative-title">ODOS — Email Newsletter</div>
+          <div class="creative-desc">Bi-weekly newsletter design covering platform updates, Limit Orders launch, and key milestones including 146K wallets and $3.3B trading volume.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: two square GIFs -->
+    <div class="creative-grid-square">
+      <div class="creative-card">
+        <div class="creative-img-wrap creative-img-square">
+          <img src="artplus.gif" alt="Joyn ART+ animated graphic" />
+        </div>
+        <div class="creative-meta">
+          <span class="creative-tag">Motion / Social</span>
+          <div class="creative-title">Joyn — ART+ Campaign</div>
+          <div class="creative-desc">Animated social graphic for the Joyn Composer Open Access ART+ feature launch, designed for X and Instagram.</div>
+        </div>
+      </div>
+      <div class="creative-card">
+        <div class="creative-img-wrap creative-img-square">
+          <img src="curatorfee.gif" alt="Joyn Open Curator Fee animated graphic" />
+        </div>
+        <div class="creative-meta">
+          <span class="creative-tag">Motion / Social</span>
+          <div class="creative-title">Joyn — Open Curator Fee</div>
+          <div class="creative-desc">Animated launch graphic for the Open Curator Fee feature, part of the Composer Open Access rollout across Joyn's social channels.</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
