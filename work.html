@@ -30,19 +30,6 @@
   html, body { min-height: 100%; background: var(--bg); color: var(--text); font-family: var(--font); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
   body { padding-top: 56px; }
 
-  /* ── PAGE TRANSITION ── */
-  .page-transition {
-    position: fixed; inset: 0; z-index: 9999;
-    background: #B71622;
-    opacity: 1;
-    pointer-events: all;
-    transition: opacity 0.4s ease;
-  }
-  .page-transition.done {
-    opacity: 0;
-    pointer-events: none;
-  }
-
   /* ── HEADER ── */
   .header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -93,7 +80,15 @@
   .section--light { background: var(--bg); }
   .section--alt { background: var(--bg-section); }
   .section-inner { max-width: 1100px; margin: 0 auto; }
-  .section-eyebrow { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .section-eyebrow {
+    font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-eyebrow::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent); display: block; flex-shrink: 0;
+  }
   .section-title { font-family: var(--font-serif); font-size: clamp(22px, 2.8vw, 36px); color: var(--text); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 40px; }
 
   /* ── CREATIVE GRID ── */
@@ -185,9 +180,6 @@
 </style>
 </head>
 <body>
-
-<!-- PAGE TRANSITION OVERLAY -->
-<div class="page-transition" id="page-transition"></div>
 
 <!-- HEADER -->
 <header class="header">
