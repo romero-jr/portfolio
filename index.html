@@ -151,6 +151,45 @@
   /* ── TWEETS ── */
   .tweet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
+  /* ── THE WORK CTA ── */
+  .work-cta-section {
+    background: var(--bg-dark);
+    padding: 80px 64px;
+  }
+  .work-cta-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .work-cta-eyebrow {
+    font-size: 11px; font-weight: 700; color: var(--accent);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+  }
+  .work-cta-eyebrow::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); display: block;
+  }
+  .work-cta-title {
+    font-family: var(--font); font-weight: 900;
+    font-size: clamp(56px, 8vw, 110px);
+    color: #fff; line-height: 0.9; letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+  .work-cta-title em { color: var(--accent); font-style: normal; }
+  .work-cta-body {
+    font-size: 16px; color: rgba(255,255,255,0.45);
+    line-height: 1.8; margin-bottom: 32px;
+  }
+  .work-cta-btn {
+    display: inline-block; font-size: 13px; font-weight: 700;
+    color: #fff; background: var(--accent);
+    padding: 14px 32px; border-radius: 4px;
+    text-decoration: none; letter-spacing: 0.01em;
+    transition: all 0.15s;
+  }
+  .work-cta-btn:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(183,22,34,0.35); }
+
   /* ── FOOTER ── */
   .footer { background: #d8d8d8; padding: 32px 64px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(0,0,0,0.5); border-top: 1px solid rgba(0,0,0,0.1); }
   .footer-links { display: flex; gap: 24px; }
@@ -164,6 +203,8 @@
   @media (max-width: 960px) {
     .header { padding: 0 20px; } .header-nav { gap: 16px; }
     .hero { height: 50vh; }
+    .work-cta-section { padding: 56px 20px; }
+    .work-cta-inner { grid-template-columns: 1fr; gap: 32px; }
     .about-inner { grid-template-columns: 1fr; gap: 32px; }
     .section { padding: 56px 20px; }
     .stats, .skills-grid { grid-template-columns: repeat(2, 1fr); }
@@ -263,6 +304,20 @@
         <div class="skill-category">Tools & AI</div>
         <div class="skill-list">Claude / ChatGPT<br>Midjourney / Sora<br>HubSpot / Mailchimp<br>Google Analytics<br>Figma / Premiere</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE WORK CTA -->
+<section class="work-cta-section">
+  <div class="work-cta-inner">
+    <div class="work-cta-left">
+      <div class="work-cta-eyebrow">Visual Portfolio</div>
+      <div class="work-cta-title">The<br><em>Work.</em></div>
+    </div>
+    <div class="work-cta-right">
+      <p class="work-cta-body">Campaigns, launches, live streams, and social content built across Agoric, Joyn, Gemini, and Nifty Gateway. Videos, design assets, and standout social moments — all in one place.</p>
+      <a href="work.html" class="work-cta-btn">View the Work →</a>
     </div>
   </div>
 </section>
