@@ -107,8 +107,13 @@
   .creative-title { font-size: 16px; font-weight: 700; color: var(--text); margin: 6px 0 6px; letter-spacing: -0.01em; }
   .creative-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
 
+  .joyn-gifs { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .joyn-gifs .creative-img-wrap { aspect-ratio: 1/1; }
+  .creative-card--joyn .creative-meta { padding: 20px 24px; }
+
   /* ── TWEETS ── */
-  .tweet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .tweet-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: start; }
+  .tweet-grid > div { min-width: 0; overflow: hidden; }
 
   /* ── WORK ── */
   .work-grid { display: flex; flex-direction: column; gap: 16px; }
@@ -142,8 +147,8 @@
   <a href="index.html" class="header-back">← Miguel Romero Jr</a>
   <nav class="header-nav">
     <a href="#wins">Social Wins</a>
-    <a href="#videos">Videos</a>
-    <a href="#creative">Creative</a>
+    <a href="#videos">Video Content</a>
+    <a href="#creative">Design & Visuals</a>
   </nav>
 </header>
 
@@ -156,11 +161,11 @@
   </div>
 </div>
 
-<!-- SOCIAL WINS -->
+<!-- SOCIAL MEDIA WINS -->
 <section class="section section--light" id="wins">
   <div class="section-inner">
-    <div class="section-eyebrow">Selected Posts</div>
-    <div class="section-title">Favorite Social Media Wins</div>
+    <div class="section-eyebrow">Social Media Wins</div>
+    <div class="section-title">Standout social content shaping product narratives and community momentum.</div>
     <div class="tweet-grid">
       <div>
         <blockquote class="twitter-tweet">
@@ -191,28 +196,12 @@
   </div>
 </section>
 
-<!-- VIDEOS / SELECTED WORK -->
+<!-- VIDEO CONTENT -->
 <section class="section section--alt" id="videos">
   <div class="section-inner">
-    <div class="section-eyebrow">Portfolio</div>
-    <div class="section-title">Selected Work</div>
+    <div class="section-eyebrow">Video Content</div>
+    <div class="section-title">Product videos, live streams & event coverage.</div>
     <div class="work-grid">
-      <div class="work-card">
-        <div class="work-tag">Product Launch</div>
-        <div class="work-title">Joyn — Product Launch Live Stream</div>
-        <div class="work-desc">Live stream amassed 2K live viewers on X and 10K+ views lifetime for new product launch at Joyn.</div>
-        <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
-          <iframe src="https://www.youtube.com/embed/80GqoOiyNsE" title="Joyn Product Launch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
-        </div>
-      </div>
-      <div class="work-card">
-        <div class="work-tag">Event Coverage</div>
-        <div class="work-title">Agoric — Live Event Coverage</div>
-        <div class="work-desc">Live conference coverage streamed to the Agoric community, driving real-time engagement across Web3 developer audiences.</div>
-        <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
-          <iframe src="https://www.youtube.com/embed/0acR0FB9ZGk" title="Agoric Event Coverage" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
-        </div>
-      </div>
       <div class="work-card">
         <div class="work-tag">GTM Launch Video</div>
         <div class="work-title">Nifty Gateway — Mobile App Launch</div>
@@ -221,15 +210,31 @@
           <iframe src="https://www.youtube.com/embed/1uY-vv7KNW0" title="Nifty Gateway Mobile Launch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
         </div>
       </div>
+      <div class="work-card">
+        <div class="work-tag">Product Launch Live Stream</div>
+        <div class="work-title">Joyn — Product Launch Live Stream</div>
+        <div class="work-desc">Live stream amassed 2K live viewers on X and 10K+ views lifetime for new product launch at Joyn.</div>
+        <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
+          <iframe src="https://www.youtube.com/embed/80GqoOiyNsE" title="Joyn Product Launch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-tag">Conference Coverage</div>
+        <div class="work-title">Agoric — Live Event Coverage</div>
+        <div class="work-desc">Live conference coverage streamed to the Agoric community, driving real-time engagement across Web3 developer audiences.</div>
+        <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
+          <iframe src="https://www.youtube.com/embed/0acR0FB9ZGk" title="Agoric Event Coverage" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CREATIVE WORK -->
-<section class="section section--light" id="creative">
+<!-- DESIGN & VISUAL ASSETS -->
+<section class="section section--alt" id="creative">
   <div class="section-inner">
-    <div class="section-eyebrow">Creative</div>
-    <div class="section-title">Design & Campaign Work</div>
+    <div class="section-eyebrow">Design & Visual Assets</div>
+    <div class="section-title">Brand visuals, campaign assets, UI elements, and marketing design.</div>
 
     <!-- Row 1: two wide landscape images -->
     <div class="creative-grid-wide">
@@ -255,26 +260,21 @@
       </div>
     </div>
 
-    <!-- Row 2: two square GIFs -->
-    <div class="creative-grid-square">
-      <div class="creative-card">
-        <div class="creative-img-wrap creative-img-square">
-          <img src="artplus.gif" alt="Joyn ART+ animated graphic" />
+    <!-- Row 2: Joyn combined card with both GIFs -->
+    <div class="creative-grid-wide">
+      <div class="creative-card creative-card--joyn" style="grid-column: 1 / -1;">
+        <div class="joyn-gifs">
+          <div class="creative-img-wrap creative-img-square">
+            <img src="artplus.gif" alt="Joyn ART+ animated graphic" />
+          </div>
+          <div class="creative-img-wrap creative-img-square">
+            <img src="curatorfee.gif" alt="Joyn Open Curator Fee animated graphic" />
+          </div>
         </div>
         <div class="creative-meta">
           <span class="creative-tag">Motion / Social</span>
-          <div class="creative-title">Joyn — ART+ Campaign</div>
-          <div class="creative-desc">Animated social graphic for the Joyn Composer Open Access ART+ feature launch, designed for X and Instagram.</div>
-        </div>
-      </div>
-      <div class="creative-card">
-        <div class="creative-img-wrap creative-img-square">
-          <img src="curatorfee.gif" alt="Joyn Open Curator Fee animated graphic" />
-        </div>
-        <div class="creative-meta">
-          <span class="creative-tag">Motion / Social</span>
-          <div class="creative-title">Joyn — Open Curator Fee</div>
-          <div class="creative-desc">Animated launch graphic for the Open Curator Fee feature, part of the Composer Open Access rollout across Joyn's social channels.</div>
+          <div class="creative-title">Joyn — Social Campaign Graphics</div>
+          <div class="creative-desc">Animated launch graphics for two Composer Open Access features — ART+ and Open Curator Fee — designed for X and Instagram campaigns.</div>
         </div>
       </div>
     </div>
@@ -284,7 +284,7 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e885818f9d8d84a89a87858d9a87829ac68b8785">[email&#160;protected]</a></span>
+  <span>miguel@romerojr.com</span>
   <div class="footer-links">
     <a href="https://twitter.com/romerojr__" target="_blank">X / Twitter</a>
     <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
