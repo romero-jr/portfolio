@@ -30,6 +30,16 @@
   html, body { min-height: 100%; background: var(--bg); color: var(--text); font-family: var(--font); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
   body { padding-top: 56px; }
 
+  /* ── PAGE TRANSITION ── */
+  .page-transition {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #B71622;
+    transform: translateX(0);
+    transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+    pointer-events: none;
+  }
+  .page-transition.slide-out { transform: translateX(100%); }
+
   /* ── HEADER ── */
   .header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -172,6 +182,9 @@
 </style>
 </head>
 <body>
+
+<!-- PAGE TRANSITION OVERLAY -->
+<div class="page-transition" id="page-transition"></div>
 
 <!-- HEADER -->
 <header class="header">
@@ -364,6 +377,18 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── PAGE TRANSITION: slide out on load ──
+  window.addEventListener(\"DOMContentLoaded\", () => {
+    const overlay = document.getElementById(\"page-transition\");
+    // Small delay so browser has painted before we animate
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        overlay.classList.add(\"slide-out\");
+      });
+    });
+  });
+
+  // ── LIGHTBOX ──
   function openLightbox(src) {
     document.getElementById("lightbox-img").src = src;
     document.getElementById("lightbox").classList.add("open");
