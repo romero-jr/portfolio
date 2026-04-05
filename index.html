@@ -200,12 +200,14 @@
   .page-transition {
     position: fixed; inset: 0; z-index: 9999;
     background: var(--accent);
-    transform: translateX(-100%);
-    transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+    opacity: 0;
     pointer-events: none;
+    transition: opacity 0.4s ease;
   }
-  .page-transition.slide-in { transform: translateX(0); }
-  .page-transition.slide-out { transform: translateX(100%); }
+  .page-transition.active {
+    opacity: 1;
+    pointer-events: all;
+  }
 
   /* ── ANIMATIONS ── */
   .fade-up {
@@ -412,16 +414,16 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <span>miguel@romerojr.com</span>
+  <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="93fefaf4e6f6ffd3e1fcfef6e1fcf9e1bdf0fcfe">[email&#160;protected]</a></span>
   <div class="footer-links">
     <a href="https://twitter.com/romerojr__" target="_blank">X / Twitter</a>
     <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
-    <a href="mailto:miguel@romerojr.com">Email</a>
+    <a href="/cdn-cgi/l/email-protection#4a27232d3f2f260a3825272f3825203864292527">Email</a>
     <a href="https://romerojr.com" target="_blank">Portfolio</a>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ── SCROLL ANIMATIONS ──
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -438,13 +440,4 @@
   const overlay = document.getElementById("page-transition");
 
   // Intercept work.html link
-  document.querySelectorAll("a[href='work.html']").forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      overlay.classList.add("slide-in");
-      setTimeout(() => { window.location.href = "work.html"; }, 580);
-    });
-  });
-</script>
-</body>
-</html>
+  document.quer
