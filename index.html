@@ -196,19 +196,6 @@
   .footer-links a { color: rgba(0,0,0,0.5); text-decoration: none; transition: color 0.15s; }
   .footer-links a:hover { color: #111; }
 
-  /* ── PAGE TRANSITION ── */
-  .page-transition {
-    position: fixed; inset: 0; z-index: 9999;
-    background: var(--accent);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-  }
-  .page-transition.active {
-    opacity: 1;
-    pointer-events: all;
-  }
-
   /* ── ANIMATIONS ── */
   .fade-up {
     opacity: 0;
@@ -250,9 +237,6 @@
 </style>
 </head>
 <body>
-
-<!-- PAGE TRANSITION OVERLAY -->
-<div class="page-transition" id="page-transition"></div>
 
 <!-- HEADER -->
 <header class="header">
@@ -418,13 +402,12 @@
   <div class="footer-links">
     <a href="https://twitter.com/romerojr__" target="_blank">X / Twitter</a>
     <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
-    <a href="/cdn-cgi/l/email-protection#4a27232d3f2f260a3825272f3825203864292527">Email</a>
+    <a href="mailto:miguel@romerojr.com">Email</a>
     <a href="https://romerojr.com" target="_blank">Portfolio</a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ── SCROLL ANIMATIONS ──
+<script>
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -433,11 +416,9 @@
       }
     });
   }, { threshold: 0.1 });
+
   document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
   document.querySelectorAll(".stagger-children").forEach(el => observer.observe(el));
-
-  // ── PAGE TRANSITION ──
-  const overlay = document.getElementById("page-transition");
-
-  // Intercept work.html link
-  document.quer
+</script>
+</body>
+</html>
