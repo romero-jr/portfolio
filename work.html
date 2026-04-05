@@ -34,11 +34,14 @@
   .page-transition {
     position: fixed; inset: 0; z-index: 9999;
     background: #B71622;
-    transform: translateX(0);
-    transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 0.4s ease;
+  }
+  .page-transition.done {
+    opacity: 0;
     pointer-events: none;
   }
-  .page-transition.slide-out { transform: translateX(100%); }
 
   /* ── HEADER ── */
   .header {
