@@ -211,8 +211,6 @@
     transition: opacity 0.65s ease, transform 0.65s ease;
   }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-  /* Staggered children — each direct child animates in sequence */
   .stagger-children > * {
     opacity: 0;
     transform: translateY(24px);
@@ -275,7 +273,7 @@
         <p class="about-body">A computer scientist who took his pragmatic mindset and dove into the world of marketing and communications. I've collaborated with cross-functional teams across diverse organizations, leading some of the most ambitious campaigns — regardless of budget. I believe that exceptional marketing stems from powerful narratives and thoughtful, strategic design.</p>
         <div class="about-actions">
           <a href="#" class="btn-primary">Resume (PDF) ↗</a>
-          <a href="mailto:miguel@romerojr.com" class="btn-ghost">Get in Touch</a>
+          <a href="/cdn-cgi/l/email-protection#4a27232d3f2f260a3825272f3825203864292527" class="btn-ghost">Get in Touch</a>
         </div>
       </div>
     </div>
@@ -410,11 +408,10 @@
   <div class="footer-links">
     <a href="https://twitter.com/romerojr__" target="_blank">X / Twitter</a>
     <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
-    <a href="mailto:miguel@romerojr.com">Email</a>
+    <a href="/cdn-cgi/l/email-protection#d3bebab4a6b6bf93a1bcbeb6a1bcb9a1fdb0bcbe">Email</a>
     <a href="https://romerojr.com" target="_blank">Portfolio</a>
   </div>
 </footer>
-
 <script>
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -424,5 +421,8 @@
       }
     });
   }, { threshold: 0.1 });
-
-  document.querySelectorAll(".fade-up"
+  document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+  document.querySelectorAll(".stagger-children").forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
