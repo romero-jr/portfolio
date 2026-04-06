@@ -119,11 +119,18 @@
   .joyn-gifs .creative-img-wrap { aspect-ratio: 1/1; }
   .creative-card--joyn .creative-meta { padding: 20px 24px; }
 
+  /* ── YMAX GRID ── */
+  .ymax-wrap { width: 100%; }
+  .ymax-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 12px; background: var(--bg-section); }
+  .ymax-banner { aspect-ratio: 3/1; }
+  .ymax-ad { aspect-ratio: 1/1; }
+  .ymax-grid .img-link { display: block; width: 100%; height: 100%; }
+  .ymax-grid .img-link img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+
   /* ── TWEETS ── */
   .tweet-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; }
   .tweet-grid > div { min-width: 0; overflow: hidden; }
   .tweet-grid > div .twitter-tweet { margin: 0 !important; max-width: 100% !important; }
-  /* Force twitter iframes to respect container */
   .tweet-grid iframe { max-width: 100% !important; width: 100% !important; }
 
   /* ── WORK ── */
@@ -174,6 +181,8 @@
     .creative-grid-wide, .creative-grid-square { grid-template-columns: 1fr; }
     .work-grid { grid-template-columns: 1fr; }
     .joyn-gifs { grid-template-columns: 1fr 1fr; }
+    .ymax-grid { grid-template-columns: 1fr; }
+    .ymax-banner { aspect-ratio: 3/1; }
     .footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
     .footer-links { justify-content: center; flex-wrap: wrap; }
   }
@@ -351,6 +360,36 @@
       </div>
     </div>
 
+    <!-- Row 3: YMax campaign assets -->
+    <div style="margin-top: 16px;">
+      <div class="creative-card">
+        <div class="ymax-wrap">
+          <div class="ymax-grid">
+            <div class="creative-img-wrap ymax-ad">
+              <a class="img-link" href="#" onclick="openLightbox('ymaxearly.png');return false;">
+                <img src="ymaxearly.png" alt="YMax — Now in Early Access banner" style="object-position: right center;" />
+              </a>
+            </div>
+            <div class="creative-img-wrap ymax-ad">
+              <a class="img-link" href="#" onclick="openLightbox('ad1.png');return false;">
+                <img src="ad1.png" alt="YMax paid social ad — execute with conviction" />
+              </a>
+            </div>
+            <div class="creative-img-wrap ymax-ad">
+              <a class="img-link" href="#" onclick="openLightbox('ad2.png');return false;">
+                <img src="ad2.png" alt="YMax paid social ad — visionaries orchestrate" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="creative-meta">
+          <span class="creative-tag">Campaign / Paid Social</span>
+          <div class="creative-title">YMax — Early Access Launch Campaign</div>
+          <div class="creative-desc">Brand launch assets for YMax's early access rollout — a product built by Agoric for on-chain capital orchestration. The banner announced the launch moment; the two paid social ads ran a conviction-driven narrative targeting DeFi power users, built around bold typographic contrast and the YMax brand voice.</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -362,28 +401,16 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c8a5a1afbdada488baa7a5adbaa7a2bae6aba7a5">[email&#160;protected]</a></span>
+  <span>miguel@romerojr.com</span>
   <div class="footer-links">
     <a href="https://twitter.com/romerojr__" target="_blank">X / Twitter</a>
     <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
-    <a href="/cdn-cgi/l/email-protection#7b16121c0e1e173b0914161e0914110955181416">Email</a>
+    <a href="mailto:miguel@romerojr.com">Email</a>
     <a href="index.html">Home</a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ── PAGE TRANSITION: slide out on load ──
-  window.addEventListener(\"DOMContentLoaded\", () => {
-    const overlay = document.getElementById(\"page-transition\");
-    // Small delay so browser has painted before we animate
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        overlay.classList.add(\"slide-out\");
-      });
-    });
-  });
-
-  // ── LIGHTBOX ──
+<script>
   function openLightbox(src) {
     document.getElementById("lightbox-img").src = src;
     document.getElementById("lightbox").classList.add("open");
@@ -395,7 +422,6 @@
     document.body.style.overflow = "";
   }
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
-
-  // Fix tweet iframe widths on resize
-  function fixTweets() {
-    d
+</script>
+</body>
+</html>
