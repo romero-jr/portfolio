@@ -817,6 +817,18 @@ html, body {
   opacity: 0.7;
 }
 .end-btn:hover { opacity: 1; color: #fff; }
+
+/* ── MOBILE SCROLLABLE SECTIONS ── */
+@media (max-width: 640px) {
+  .section--scrollable {
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 48px 0 80px;
+  }
+  .section--scrollable::-webkit-scrollbar { display: none; }
+  .section--scrollable { -ms-overflow-style: none; scrollbar-width: none; }
+}
 </style>
 </head>
 <body>
@@ -908,7 +920,7 @@ html, body {
 
 
   <!-- SECTION 5: EXPERIENCE -->
-  <section class="section" data-index="4">
+  <section class="section section--scrollable" data-index="4">
     <div class="s5-wrap">
       <div class="s5-header">Recent Experience</div>
       <div class="s5-list">
@@ -982,7 +994,7 @@ html, body {
 
 
   <!-- SECTION 6: SKILLS -->
-  <section class="section" data-index="5">
+  <section class="section section--scrollable" data-index="5">
     <div class="s6-wrap">
       <div class="s6-header">Skills</div>
       <div class="s6-grid">
