@@ -454,67 +454,79 @@ html, body {
 }
 
 /* ── RESPONSIVE ── */
+/* ── RESPONSIVE: TABLET ── */
 @media (max-width: 900px) {
+  .s1-name { font-size: clamp(14px, 4vw, 32px) !important; white-space: normal !important; text-align: center; }
   .s2-bento {
     grid-template-columns: 1fr 1fr !important;
     grid-template-rows: 200px 200px !important;
     width: calc(100vw - 80px) !important;
   }
-  .s3-bento {
-    width: calc(100vw - 80px) !important;
-  }
-  .s4-wrap {
-    width: calc(100vw - 80px) !important;
-    max-width: calc(100vw - 80px) !important;
-  }
-  .s5-wrap {
-    width: calc(100vw - 80px) !important;
-  }
-  .s6-wrap {
-    width: calc(100vw - 80px) !important;
-  }
+  .s3-bento { width: calc(100vw - 80px) !important; }
+  .s4-wrap { width: calc(100vw - 80px) !important; max-width: calc(100vw - 80px) !important; }
+  .s5-wrap { width: calc(100vw - 80px) !important; }
+  .s6-wrap { width: calc(100vw - 80px) !important; }
+  .dots { right: 16px !important; }
 }
 
+/* ── RESPONSIVE: MOBILE ── */
 @media (max-width: 640px) {
+  /* Name section */
+  .s1-name {
+    font-size: clamp(22px, 7vw, 36px) !important;
+    white-space: normal !important;
+    text-align: center;
+    line-height: 1.2 !important;
+  }
+  .s1-links { flex-wrap: wrap; justify-content: center; }
+
+  /* Corners */
+  .frame-corner { width: 20px !important; height: 20px !important; }
+  .frame-corner--tl { top: 12px !important; left: 12px !important; }
+  .frame-corner--tr { top: 12px !important; right: 12px !important; }
+  .frame-corner--bl { bottom: 12px !important; left: 12px !important; }
+  .frame-corner--br { bottom: 12px !important; right: 12px !important; }
+
+  /* Dots */
+  .dots { right: 10px !important; }
+
+  /* Section 2: About — single column stack */
   .s2-bento {
     grid-template-columns: 1fr !important;
-    grid-template-rows: 240px auto auto !important;
-    width: calc(100vw - 48px) !important;
+    grid-template-rows: 220px auto auto !important;
+    width: calc(100vw - 32px) !important;
+    gap: 6px !important;
   }
-  .bento-photo {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-  }
-  .bento-title {
-    grid-column: 1 !important;
-    grid-row: 2 !important;
-  }
-  .bento-disciplines {
-    grid-column: 1 !important;
-    grid-row: 3 !important;
-  }
-  .s3-bento {
-    width: calc(100vw - 48px) !important;
-  }
-  .s4-wrap {
-    width: calc(100vw - 48px) !important;
-    max-width: calc(100vw - 48px) !important;
-  }
-  .s4-card > div {
-    flex-direction: column !important;
-    gap: 24px !important;
-  }
-  .s4-title {
-    font-size: clamp(48px, 14vw, 80px) !important;
-  }
-  .frame-corner {
-    width: 24px !important;
-    height: 24px !important;
-  }
-  .frame-corner--tl { top: 16px !important; left: 16px !important; }
-  .frame-corner--tr { top: 16px !important; right: 16px !important; }
-  .frame-corner--bl { bottom: 16px !important; left: 16px !important; }
-  .frame-corner--br { bottom: 16px !important; right: 16px !important; }
+  .bento-photo { grid-column: 1 !important; grid-row: 1 !important; }
+  .bento-title { grid-column: 1 !important; grid-row: 2 !important; padding: 20px !important; }
+  .bento-disciplines { grid-column: 1 !important; grid-row: 3 !important; padding: 20px !important; }
+  .bento-main-title { font-size: clamp(24px, 8vw, 40px) !important; }
+  .bento-para { font-size: 11px !important; }
+
+  /* Section 3: Brands */
+  .s3-wrap { width: calc(100vw - 32px) !important; }
+  .s3-bento { width: calc(100vw - 32px) !important; padding: 16px !important; }
+  .s3-bento img { width: 100% !important; }
+
+  /* Section 4: The Work */
+  .s4-wrap { width: calc(100vw - 32px) !important; max-width: calc(100vw - 32px) !important; gap: 12px !important; }
+  .s4-card { padding: 28px 24px !important; }
+  .s4-card > div { flex-direction: column !important; gap: 20px !important; }
+  .s4-title { font-size: clamp(48px, 16vw, 80px) !important; }
+  .s4-desc { font-size: 12px !important; max-width: 100% !important; }
+
+  /* Section 5: Experience — single column */
+  .s5-wrap { width: calc(100vw - 32px) !important; gap: 10px !important; }
+  .s5-list { grid-template-columns: 1fr !important; gap: 6px !important; }
+  .s5-item { padding: 20px 18px 24px !important; }
+  .s5-company { font-size: 12px !important; }
+  .s5-bullets li { font-size: 10px !important; }
+
+  /* Section 6: Skills — single column */
+  .s6-wrap { width: calc(100vw - 32px) !important; gap: 10px !important; }
+  .s6-grid { grid-template-columns: 1fr !important; gap: 6px !important; }
+  .s6-card { padding: 20px 18px 24px !important; }
+  .s6-footer { flex-wrap: wrap; gap: 12px !important; justify-content: center; }
 }
 
 /* ── SECTION 5: EXPERIENCE ── */
