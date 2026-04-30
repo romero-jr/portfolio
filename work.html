@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-08SGZSSHYS"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -16,197 +15,224 @@
 <meta property="og:description" content="Visual portfolio — social media wins, campaigns, and launch videos." />
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #f0ede8;
-    --bg-section: #e6e2dc;
-    --bg-card: #faf9f7;
-    --bg-dark: #141414;
-    --accent: #B71622;
-    --accent-light: rgba(183,22,34,0.08);
-    --accent-hover: #9a1019;
-    --text: #111111;
-    --text-muted: #5a5a5a;
-    --text-light: #999999;
-    --border: #d0cbc3;
-    --font: 'DM Sans', sans-serif;
-    --font-serif: 'DM Serif Display', serif;
-  }
-  html { overflow-y: scroll; scroll-behavior: smooth; }
-  html, body { min-height: 100%; background: var(--bg); color: var(--text); font-family: var(--font); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
-  body { padding-top: 56px; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #141414;
+  --accent: #B71622;
+  --text: #ffffff;
+  --text-muted: rgba(255,255,255,0.45);
+  --border: rgba(255,255,255,0.1);
+  --card-bg: rgba(20,20,20,0.55);
+  --font: 'Inter', sans-serif;
+}
 
-  /* ── HEADER ── */
-  .header {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(240,237,232,0.97); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px;
-  }
-  .header-logo { font-family: var(--font-serif); font-size: 20px; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
-  .header-nav { display: flex; gap: 32px; align-items: center; }
-  .header-nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.15s; }
-  .header-nav a:hover { color: var(--text); }
-  .header-nav a.active { color: var(--accent); }
-  .header-back {
-    font-size: 12px; font-weight: 600; color: var(--text-muted);
-    text-decoration: none; letter-spacing: 0.04em;
-    display: flex; align-items: center; gap: 6px; transition: color 0.15s;
-  }
-  .header-back:hover { color: var(--text); }
+html, body {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+body { padding-top: 0; }
 
-  /* ── PAGE HERO ── */
-  .page-hero {
-    background: var(--bg-dark); padding: 64px 64px 56px;
-    border-bottom: 1px solid #222;
-  }
-  .page-hero-inner { max-width: 1100px; margin: 0 auto; }
-  .page-hero-eyebrow {
-    font-size: 11px; font-weight: 700; color: var(--accent);
-    letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .page-hero-eyebrow::before {
-    content: ''; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); display: block;
-  }
-  .page-hero-title {
-    font-family: var(--font); font-weight: 900;
-    font-size: clamp(56px, 9vw, 120px);
-    color: #fff; line-height: 0.9; letter-spacing: -0.04em;
-    text-transform: uppercase; margin-bottom: 24px;
-  }
-  .page-hero-title em { color: var(--accent); font-style: normal; }
-  .page-hero-sub {
-    font-size: 15px; color: rgba(255,255,255,0.4); max-width: 560px; line-height: 1.7;
-  }
+/* ── GRAIN CANVAS ── */
+#grainCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
 
-  /* ── SHARED SECTION STYLES ── */
-  .section { padding: 80px 64px; }
-  .section--light { background: var(--bg); }
-  .section--alt { background: var(--bg-section); }
-  .section-inner { max-width: 1100px; margin: 0 auto; }
-  .section-eyebrow {
-    font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.12em;
-    text-transform: uppercase; margin-bottom: 8px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-eyebrow::before {
-    content: ''; width: 7px; height: 7px; border-radius: 50%;
-    background: var(--accent); display: block; flex-shrink: 0;
-  }
-  .section-title { font-family: var(--font-serif); font-size: clamp(22px, 2.8vw, 36px); color: var(--text); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 40px; }
 
-  /* ── CREATIVE GRID ── */
-  .creative-grid-wide {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 16px; margin-bottom: 16px;
-  }
-  .creative-grid-square {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .creative-card {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 6px; overflow: hidden;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .creative-card:hover { border-color: var(--accent); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
-  .creative-img-wrap { overflow: hidden; background: #1a1a1a; }
-  .creative-img-wrap > img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
-  .creative-card:hover .creative-img-wrap > img { transform: scale(1.02); }
-  .creative-img-square { aspect-ratio: 1/1; }
-  .creative-meta { padding: 20px 24px; }
-  .creative-tag { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; }
-  .creative-title { font-size: 16px; font-weight: 700; color: var(--text); margin: 6px 0 6px; letter-spacing: -0.01em; }
-  .creative-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
 
-  .joyn-gifs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 12px; background: var(--bg-section); }
-  .joyn-gifs .creative-img-wrap { aspect-ratio: 1/1; }
-  .creative-card--joyn .creative-meta { padding: 20px 24px; }
 
-  /* ── YMAX GRID ── */
-  .ymax-wrap { width: 100%; }
-  .ymax-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 12px; background: var(--bg-section); }
-  .ymax-banner { aspect-ratio: 3/1; }
-  .ymax-ad { aspect-ratio: 1/1; }
-  .ymax-grid .img-link { display: block; width: 100%; height: 100%; }
-  .ymax-grid .img-link img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+/* ── HERO BENTO CARD ── */
+.hero-bento-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 48px 56px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 680px;
+}
+.hero-back {
+  margin-top: 28px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+.hero-back:hover { color: #fff; }
 
-  /* ── TWEETS ── */
-  .tweet-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; }
-  .tweet-grid > div { min-width: 0; overflow: hidden; }
-  .tweet-grid > div .twitter-tweet { margin: 0 !important; max-width: 100% !important; }
-  .tweet-grid iframe { max-width: 100% !important; width: 100% !important; }
+/* ── PAGE HERO ── */
+.page-hero {
+  position: relative; z-index: 1;
+  padding: 80px 64px 64px;
+  border-bottom: 1px solid var(--border);
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+}
+.page-hero-inner { max-width: 1100px; margin: 0 auto; }
+.page-hero-eyebrow {
+  font-size: 10px; font-weight: 700; color: var(--accent);
+  letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.page-hero-eyebrow::before {
+  content: ''; width: 20px; height: 2px; background: var(--accent); display: block;
+}
+.page-hero-title {
+  font-weight: 900;
+  font-size: clamp(56px, 9vw, 120px);
+  color: #fff; line-height: 0.88; letter-spacing: -0.04em;
+  text-transform: uppercase; margin-bottom: 24px;
+}
+.page-hero-title em { color: var(--accent); font-style: normal; }
+.page-hero-sub {
+  font-size: 14px; color: rgba(255,255,255,0.4); max-width: 520px; line-height: 1.75;
+}
 
-  /* ── WORK ── */
-  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .work-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 32px; }
-  .work-tag { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
-  .work-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
-  .work-desc { font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; }
+/* ── SECTIONS ── */
+.section { position: relative; z-index: 1; padding: 64px; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-eyebrow {
+  font-size: 10px; font-weight: 700; color: #fff;
+  letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-eyebrow::before {
+  content: ''; width: 20px; height: 2px; background: var(--accent); display: block;
+}
+.section-title {
+  font-size: clamp(14px, 1.6vw, 18px); color: rgba(255,255,255,0.5);
+  line-height: 1.6; margin-bottom: 32px; max-width: 700px;
+}
 
-  /* ── CLICKABLE IMAGES ── */
-  .img-link { display: block; cursor: zoom-in; }
-  .joyn-gifs .img-link { display: block; width: 100%; height: 100%; }
-  .creative-img-wrap .img-link img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
-  .creative-card:hover .img-link img { transform: scale(1.02); }
+/* ── BENTO CARD ── */
+.bento-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.bento-card:hover { border-color: rgba(183,22,34,0.5); }
 
-  /* ── LIGHTBOX ── */
-  .lightbox {
-    display: none; position: fixed; inset: 0; z-index: 1000;
-    background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
-    padding: 24px;
-  }
-  .lightbox.open { display: flex; }
-  .lightbox img {
-    max-width: 90vw; max-height: 90vh;
-    object-fit: contain; border-radius: 6px;
-    box-shadow: 0 32px 80px rgba(0,0,0,0.8);
-  }
-  .lightbox-close {
-    position: fixed; top: 20px; right: 28px;
-    font-size: 32px; color: #fff; cursor: pointer;
-    line-height: 1; opacity: 0.7; transition: opacity 0.15s;
-    background: none; border: none; font-family: var(--font);
-  }
-  .lightbox-close:hover { opacity: 1; }
+/* ── TWEET GRID ── */
+.tweet-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px; align-items: start;
+}
+.tweet-wrap {
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  min-width: 0;
+}
+.tweet-wrap > div { min-width: 0; overflow: hidden; }
+.tweet-wrap .twitter-tweet { margin: 0 !important; max-width: 100% !important; }
+.tweet-wrap iframe { max-width: 100% !important; width: 100% !important; }
 
-  /* ── FOOTER ── */
-  .footer { background: var(--bg-dark); padding: 32px 64px; display: flex; justify-content: center; align-items: center; font-size: 13px; color: rgba(255,255,255,0.35); }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.15s; }
-  .footer-links a:hover { color: #fff; }
+/* ── VIDEO GRID ── */
+.video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.video-card { background: var(--card-bg); backdrop-filter: blur(8px); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; padding: 28px; transition: border-color 0.2s; }
+.video-card:hover { border-color: rgba(183,22,34,0.5); }
+.video-tag { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
+.video-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 8px; letter-spacing: -0.01em; }
+.video-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 20px; }
+.video-embed { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+.video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 4px; border: 1px solid var(--border); }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 960px) {
-    .header { padding: 0 20px; } .header-nav { gap: 18px; }
-    .page-hero { padding: 48px 20px 40px; }
-    .section { padding: 56px 20px; }
-    .tweet-grid { grid-template-columns: repeat(2, 1fr); }
-    .creative-grid-wide, .creative-grid-square { grid-template-columns: 1fr; }
-    .work-grid { grid-template-columns: 1fr; }
-    .joyn-gifs { grid-template-columns: 1fr 1fr; }
-    .ymax-grid { grid-template-columns: 1fr; }
-    .ymax-banner { aspect-ratio: 3/1; }
-    .footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
-    .footer-links { justify-content: center; flex-wrap: wrap; }
-  }
+/* ── CREATIVE GRIDS ── */
+.creative-grid-wide { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.creative-grid-full { margin-bottom: 12px; }
+.creative-img-wrap { overflow: hidden; background: #0a0a0a; }
+.creative-img-wrap > img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.bento-card:hover .creative-img-wrap > img { transform: scale(1.02); }
+.creative-img-square { aspect-ratio: 1/1; }
+.creative-meta { padding: 20px 24px; }
+.creative-tag { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; }
+.creative-title { font-size: 15px; font-weight: 700; color: #fff; margin: 6px 0; letter-spacing: -0.01em; }
+.creative-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.75; }
+
+.joyn-gifs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 8px; background: rgba(0,0,0,0.3); }
+.ymax-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 8px; background: rgba(0,0,0,0.3); }
+.ymax-ad { aspect-ratio: 1/1; }
+
+/* ── CLICKABLE IMAGES ── */
+.img-link { display: block; cursor: zoom-in; }
+.img-link img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+
+/* ── LIGHTBOX ── */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.95); align-items: center; justify-content: center; padding: 24px;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+.lightbox-close {
+  position: fixed; top: 20px; right: 28px;
+  font-size: 28px; color: rgba(255,255,255,0.6); cursor: pointer;
+  line-height: 1; background: none; border: none; font-family: var(--font);
+  transition: color 0.15s;
+}
+.lightbox-close:hover { color: #fff; }
+
+/* ── FOOTER ── */
+.footer {
+  position: relative; z-index: 1;
+  padding: 32px 64px;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: center; align-items: center;
+  font-size: 12px;
+}
+.footer-links { display: flex; gap: 28px; }
+.footer-links a {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s;
+}
+.footer-links a:hover { color: #fff; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+
+  .page-hero { padding: 56px 20px 40px; }
+  .section { padding: 48px 20px; }
+  .tweet-grid { grid-template-columns: repeat(2, 1fr); }
+  .creative-grid-wide { grid-template-columns: 1fr; }
+  .video-grid { grid-template-columns: 1fr; }
+  .joyn-gifs { grid-template-columns: 1fr 1fr; }
+  .ymax-grid { grid-template-columns: 1fr; }
+  .footer { padding: 24px 20px; }
+}
+@media (max-width: 560px) {
+  .tweet-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <a href="index.html" class="header-back">← Miguel Romero Jr</a>
-  <nav class="header-nav">
-    <a href="#wins">Social Wins</a>
-    <a href="#videos">Video Content</a>
-    <a href="#creative">Design & Visuals</a>
-  </nav>
-</header>
+<canvas id="grainCanvas"></canvas>
+
+
 
 <!-- PAGE HERO -->
 <div class="page-hero">
@@ -214,111 +240,71 @@
     <div class="page-hero-eyebrow">Visual Portfolio</div>
     <div class="page-hero-title">The<br><em>Work.</em></div>
     <p class="page-hero-sub">Campaigns, launches, live streams, and social content built across Agoric, Joyn, Gemini, and Nifty Gateway.</p>
+    <a href="index.html" class="hero-back">← Back to Portfolio</a>
   </div>
 </div>
 
 <!-- SOCIAL MEDIA WINS -->
-<section class="section section--light" id="wins">
+<section class="section" id="wins">
   <div class="section-inner">
     <div class="section-eyebrow">Social Media Wins</div>
     <div class="section-title">Standout social content shaping product narratives and community momentum.</div>
     <div class="tweet-grid">
-      <div>
-        <blockquote class="twitter-tweet">
-          <p lang="en" dir="ltr">1/ Today we are excited to introduce ✨Publishers✨<br>A new platform that will enable people to curate their own drops on Nifty Gateway. <a href="https://t.co/SUsOUhdzS0">pic.twitter.com/SUsOUhdzS0</a></p>
-          &mdash; Nifty Gateway Studio (@niftygateway) <a href="https://twitter.com/niftygateway/status/1565324386323890178?ref_src=twsrc%5Etfw">September 1, 2022</a>
-        </blockquote>
-      </div>
-      <div>
-        <blockquote class="twitter-tweet">
-          <p lang="en" dir="ltr">The Agoric Orchestration API is now LIVE on Mainnet 🚀<br><br>Say goodbye to complex, multi-step chaos and witness the power of one-click, cross-chain innovation! <a href="https://t.co/UllUHygaJL">pic.twitter.com/UllUHygaJL</a></p>
-          &mdash; Agoric (@agoric) <a href="https://twitter.com/agoric/status/1843713327392010725?ref_src=twsrc%5Etfw">October 8, 2024</a>
-        </blockquote>
-      </div>
-      <div>
-        <blockquote class="twitter-tweet">
-          <p lang="en" dir="ltr">★ Introducing our newest feature, Composer!<br><br>Your journey starts here ↓<a href="https://t.co/Rk81N0YHca">https://t.co/Rk81N0YHca</a> <a href="https://t.co/wQwqOZ74kG">pic.twitter.com/wQwqOZ74kG</a></p>
-          &mdash; Joyn (@joynxyz) <a href="https://twitter.com/joynxyz/status/1688569550562803713?ref_src=twsrc%5Etfw">August 7, 2023</a>
-        </blockquote>
-      </div>
-      <div>
-        <blockquote class="twitter-tweet">
-          <p lang="en" dir="ltr">It&#39;s a SUPER chain release 🔴 🔵 🟡<br><br>We&#39;re excited to announce that Limit Orders are now available on:<br>→ <a href="https://twitter.com/Optimism?ref_src=twsrc%5Etfw">@Optimism</a><br>→ <a href="https://twitter.com/base?ref_src=twsrc%5Etfw">@Base</a><br>→ <a href="https://twitter.com/modenetwork?ref_src=twsrc%5Etfw">@modenetwork</a><br><br>Enjoy simplicity &amp; ease of use.<br>Exclusively supports multi-token trade orders.<br>All executed orders are self-custodial &amp; trustless.<br><br>↓ <a href="https://t.co/7fKYfW2CGh">pic.twitter.com/7fKYfW2CGh</a></p>
-          &mdash; ODOS (@odosprotocol) <a href="https://twitter.com/odosprotocol/status/1821954956536283405?ref_src=twsrc%5Etfw">August 9, 2024</a>
-        </blockquote>
-      </div>
-      <div>
-        <blockquote class="twitter-tweet">
-          <p lang="en" dir="ltr">Big day for Agoric 🚀<br><br>New website. New tokenomics litepaper. A product-first future with <a href="https://twitter.com/Ymaxapp?ref_src=twsrc%5Etfw">@Ymaxapp</a> leading the charge.<br><br>From chain to products: here&#39;s what&#39;s changing and why it matters 🧵 <a href="https://t.co/DeVsWoBiqs">pic.twitter.com/DeVsWoBiqs</a></p>
-          &mdash; Agoric (@agoric) <a href="https://twitter.com/agoric/status/2019447164787695709?ref_src=twsrc%5Etfw">February 5, 2026</a>
-        </blockquote>
-      </div>
-      <div>
-        <blockquote class="twitter-tweet">
-          <p lang="en" dir="ltr">fly me to the moon <a href="https://twitter.com/hashtag/bitcoin?src=hash&amp;ref_src=twsrc%5Etfw">#bitcoin</a> <br><br> 🌕<br> 🚀<br> ₿<br> ₿<br> ₿<br> ₿</p>
-          &mdash; Gemini (@Gemini) <a href="https://twitter.com/Gemini/status/1552718278069460992?ref_src=twsrc%5Etfw">July 28, 2022</a>
-        </blockquote>
-      </div>
+      <div class="tweet-wrap"><div><blockquote class="twitter-tweet"><p lang="en" dir="ltr">1/ Today we are excited to introduce ✨Publishers✨<br>A new platform that will enable people to curate their own drops on Nifty Gateway. <a href="https://t.co/SUsOUhdzS0">pic.twitter.com/SUsOUhdzS0</a></p>&mdash; Nifty Gateway Studio (@niftygateway) <a href="https://twitter.com/niftygateway/status/1565324386323890178?ref_src=twsrc%5Etfw">September 1, 2022</a></blockquote></div></div>
+      <div class="tweet-wrap"><div><blockquote class="twitter-tweet"><p lang="en" dir="ltr">The Agoric Orchestration API is now LIVE on Mainnet 🚀<br><br>Say goodbye to complex, multi-step chaos and witness the power of one-click, cross-chain innovation! <a href="https://t.co/UllUHygaJL">pic.twitter.com/UllUHygaJL</a></p>&mdash; Agoric (@agoric) <a href="https://twitter.com/agoric/status/1843713327392010725?ref_src=twsrc%5Etfw">October 8, 2024</a></blockquote></div></div>
+      <div class="tweet-wrap"><div><blockquote class="twitter-tweet"><p lang="en" dir="ltr">★ Introducing our newest feature, Composer!<br><br>Your journey starts here ↓<a href="https://t.co/Rk81N0YHca">https://t.co/Rk81N0YHca</a> <a href="https://t.co/wQwqOZ74kG">pic.twitter.com/wQwqOZ74kG</a></p>&mdash; Joyn (@joynxyz) <a href="https://twitter.com/joynxyz/status/1688569550562803713?ref_src=twsrc%5Etfw">August 7, 2023</a></blockquote></div></div>
+      <div class="tweet-wrap"><div><blockquote class="twitter-tweet"><p lang="en" dir="ltr">It&#39;s a SUPER chain release 🔴 🔵 🟡<br><br>We&#39;re excited to announce that Limit Orders are now available on:<br>→ <a href="https://twitter.com/Optimism?ref_src=twsrc%5Etfw">@Optimism</a><br>→ <a href="https://twitter.com/base?ref_src=twsrc%5Etfw">@Base</a><br>→ <a href="https://twitter.com/modenetwork?ref_src=twsrc%5Etfw">@modenetwork</a><br><br>Enjoy simplicity &amp; ease of use.<br><br>↓ <a href="https://t.co/7fKYfW2CGh">pic.twitter.com/7fKYfW2CGh</a></p>&mdash; ODOS (@odosprotocol) <a href="https://twitter.com/odosprotocol/status/1821954956536283405?ref_src=twsrc%5Etfw">August 9, 2024</a></blockquote></div></div>
+      <div class="tweet-wrap"><div><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Big day for Agoric 🚀<br><br>New website. New tokenomics litepaper. A product-first future with <a href="https://twitter.com/Ymaxapp?ref_src=twsrc%5Etfw">@Ymaxapp</a> leading the charge.<br><br>From chain to products: here&#39;s what&#39;s changing and why it matters 🧵 <a href="https://t.co/DeVsWoBiqs">pic.twitter.com/DeVsWoBiqs</a></p>&mdash; Agoric (@agoric) <a href="https://twitter.com/agoric/status/2019447164787695709?ref_src=twsrc%5Etfw">February 5, 2026</a></blockquote></div></div>
+      <div class="tweet-wrap"><div><blockquote class="twitter-tweet"><p lang="en" dir="ltr">fly me to the moon <a href="https://twitter.com/hashtag/bitcoin?src=hash&amp;ref_src=twsrc%5Etfw">#bitcoin</a> <br><br> 🌕<br> 🚀<br> ₿<br> ₿<br> ₿<br> ₿</p>&mdash; Gemini (@Gemini) <a href="https://twitter.com/Gemini/status/1552718278069460992?ref_src=twsrc%5Etfw">July 28, 2022</a></blockquote></div></div>
     </div>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 </section>
 
 <!-- VIDEO CONTENT -->
-<section class="section section--alt" id="videos">
+<section class="section" id="videos" style="border-top: 1px solid var(--border);">
   <div class="section-inner">
     <div class="section-eyebrow">Video Content</div>
     <div class="section-title">Product videos, live streams & event coverage.</div>
-    <div class="work-grid">
-      <div class="work-card">
-        <div class="work-tag">GTM Launch Video</div>
-        <div class="work-title">Nifty Gateway — Mobile App Launch</div>
-        <div class="work-desc">GTM launch video produced for Nifty Gateway's mobile app release, driving awareness and adoption across a 600K+ audience.</div>
-        <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
-          <iframe src="https://www.youtube.com/embed/1uY-vv7KNW0" title="Nifty Gateway Mobile Launch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
-        </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-tag">GTM Launch Video</div>
+        <div class="video-title">Nifty Gateway — Mobile App Launch</div>
+        <div class="video-desc">GTM launch video produced for Nifty Gateway's mobile app release, driving awareness and adoption across a 600K+ audience.</div>
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/1uY-vv7KNW0" title="Nifty Gateway Mobile Launch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
       </div>
-      <div class="work-card">
-        <div class="work-tag">Product Launch Live Stream</div>
-        <div class="work-title">Joyn — Product Launch Live Stream</div>
-        <div class="work-desc">Live stream amassed 2K live viewers on X and 10K+ views lifetime for new product launch at Joyn.</div>
-        <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
-          <iframe src="https://www.youtube.com/embed/80GqoOiyNsE" title="Joyn Product Launch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
-        </div>
+      <div class="video-card">
+        <div class="video-tag">Product Launch Live Stream</div>
+        <div class="video-title">Joyn — Product Launch Live Stream</div>
+        <div class="video-desc">Live stream amassed 2K live viewers on X and 10K+ views lifetime for new product launch at Joyn.</div>
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/80GqoOiyNsE" title="Joyn Product Launch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
       </div>
-      <div class="work-card">
-        <div class="work-tag">Conference Coverage</div>
-        <div class="work-title">Agoric — Live Event Coverage</div>
-        <div class="work-desc">Live conference coverage streamed to the Agoric community, driving real-time engagement across Web3 developer audiences.</div>
-        <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
-          <iframe src="https://www.youtube.com/embed/0acR0FB9ZGk" title="Agoric Event Coverage" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
-        </div>
+      <div class="video-card">
+        <div class="video-tag">Conference Coverage</div>
+        <div class="video-title">Agoric — Live Event Coverage</div>
+        <div class="video-desc">Live conference coverage streamed to the Agoric community, driving real-time engagement across Web3 developer audiences.</div>
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/0acR0FB9ZGk" title="Agoric Event Coverage" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
       </div>
-      <div class="work-card">
-        <div class="work-tag">Product Explainer</div>
-        <div class="work-title">YMax — Product Explainer</div>
-        <div class="work-desc">Product explainer video produced for YMax, breaking down a complex DeFi product into clear, accessible narrative content.</div>
-        <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
-          <iframe src="https://www.youtube.com/embed/z5LEQZAR2EI?si=iQbBzvoglIXMBSnT" title="YMax Product Explainer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;border:1px solid var(--border);"></iframe>
-        </div>
+      <div class="video-card">
+        <div class="video-tag">Product Explainer</div>
+        <div class="video-title">YMax — Product Explainer</div>
+        <div class="video-desc">Product explainer video produced for YMax, breaking down a complex DeFi product into clear, accessible narrative content.</div>
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/z5LEQZAR2EI?si=iQbBzvoglIXMBSnT" title="YMax Product Explainer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- DESIGN & VISUAL ASSETS -->
-<section class="section section--alt" id="creative">
+<section class="section" id="creative" style="border-top: 1px solid var(--border);">
   <div class="section-inner">
     <div class="section-eyebrow">Design & Visual Assets</div>
     <div class="section-title">Brand visuals, campaign assets, UI elements, and marketing design.</div>
 
-    <!-- Row 1: two wide landscape images -->
     <div class="creative-grid-wide">
-      <div class="creative-card">
+      <div class="bento-card">
         <div class="creative-img-wrap">
-          <a class="img-link" href="#" onclick="openLightbox('kadenawindows.jpg');return false;">
-            <img src="kadenawindows.jpg" alt="Kadena Chainweaver UI" />
-          </a>
+          <a class="img-link" href="#" onclick="openLightbox('kadenawindows.jpg');return false;"><img src="kadenawindows.jpg" alt="Kadena Chainweaver UI" /></a>
         </div>
         <div class="creative-meta">
           <span class="creative-tag">Product UI / Editorial</span>
@@ -326,11 +312,9 @@
           <div class="creative-desc">Visual editorial showcasing the Chainweaver desktop wallet UI across key user flows — onboarding, key management, and transaction signing.</div>
         </div>
       </div>
-      <div class="creative-card">
+      <div class="bento-card">
         <div class="creative-img-wrap">
-          <a class="img-link" href="#" onclick="openLightbox('odosemail.jpg');return false;">
-            <img src="odosemail.jpg" alt="ODOS Email Newsletter" />
-          </a>
+          <a class="img-link" href="#" onclick="openLightbox('odosemail.jpg');return false;"><img src="odosemail.jpg" alt="ODOS Email Newsletter" /></a>
         </div>
         <div class="creative-meta">
           <span class="creative-tag">Email Marketing</span>
@@ -340,25 +324,12 @@
       </div>
     </div>
 
-    <!-- Row 2: Joyn combined card with all three GIFs -->
-    <div class="creative-grid-wide">
-      <div class="creative-card creative-card--joyn" style="grid-column: 1 / -1;">
+    <div class="creative-grid-full">
+      <div class="bento-card">
         <div class="joyn-gifs">
-          <div class="creative-img-wrap creative-img-square">
-            <a class="img-link" href="#" onclick="openLightbox('artplus.gif');return false;">
-              <img src="artplus.gif" alt="Joyn ART+ animated graphic" />
-            </a>
-          </div>
-          <div class="creative-img-wrap creative-img-square">
-            <a class="img-link" href="#" onclick="openLightbox('curatorfee.gif');return false;">
-              <img src="curatorfee.gif" alt="Joyn Open Curator Fee animated graphic" />
-            </a>
-          </div>
-          <div class="creative-img-wrap creative-img-square">
-            <a class="img-link" href="#" onclick="openLightbox('showcase.gif');return false;">
-              <img src="showcase.gif" alt="Joyn Showcase animated graphic" />
-            </a>
-          </div>
+          <div class="creative-img-wrap creative-img-square"><a class="img-link" href="#" onclick="openLightbox('artplus.gif');return false;"><img src="artplus.gif" alt="Joyn ART+ animated graphic" /></a></div>
+          <div class="creative-img-wrap creative-img-square"><a class="img-link" href="#" onclick="openLightbox('curatorfee.gif');return false;"><img src="curatorfee.gif" alt="Joyn Open Curator Fee animated graphic" /></a></div>
+          <div class="creative-img-wrap creative-img-square"><a class="img-link" href="#" onclick="openLightbox('showcase.gif');return false;"><img src="showcase.gif" alt="Joyn Showcase animated graphic" /></a></div>
         </div>
         <div class="creative-meta">
           <span class="creative-tag">Motion / Social</span>
@@ -368,33 +339,16 @@
       </div>
     </div>
 
-    <!-- Row 3: YMax campaign assets -->
-    <div style="margin-top: 16px;">
-      <div class="creative-card">
-        <div class="ymax-wrap">
-          <div class="ymax-grid">
-            <div class="creative-img-wrap ymax-ad">
-              <a class="img-link" href="#" onclick="openLightbox('ymaxearly.png');return false;">
-                <img src="ymaxearly.png" alt="YMax — Now in Early Access banner" style="object-position: 70% center;" />
-              </a>
-            </div>
-            <div class="creative-img-wrap ymax-ad">
-              <a class="img-link" href="#" onclick="openLightbox('ad1.png');return false;">
-                <img src="ad1.png" alt="YMax paid social ad — execute with conviction" />
-              </a>
-            </div>
-            <div class="creative-img-wrap ymax-ad">
-              <a class="img-link" href="#" onclick="openLightbox('ad2.png');return false;">
-                <img src="ad2.png" alt="YMax paid social ad — visionaries orchestrate" />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="creative-meta">
-          <span class="creative-tag">Campaign / Paid Social</span>
-          <div class="creative-title">YMax — Early Access Launch Campaign</div>
-          <div class="creative-desc">Brand launch assets for YMax's early access rollout — a product built by Agoric for on-chain capital orchestration. The banner announced the launch moment; the two paid social ads ran a conviction-driven narrative targeting DeFi power users, built around bold typographic contrast and the YMax brand voice.</div>
-        </div>
+    <div class="bento-card">
+      <div class="ymax-grid">
+        <div class="creative-img-wrap ymax-ad"><a class="img-link" href="#" onclick="openLightbox('ymaxearly.png');return false;"><img src="ymaxearly.png" alt="YMax — Now in Early Access banner" style="object-position: 70% center;" /></a></div>
+        <div class="creative-img-wrap ymax-ad"><a class="img-link" href="#" onclick="openLightbox('ad1.png');return false;"><img src="ad1.png" alt="YMax paid social ad — execute with conviction" /></a></div>
+        <div class="creative-img-wrap ymax-ad"><a class="img-link" href="#" onclick="openLightbox('ad2.png');return false;"><img src="ad2.png" alt="YMax paid social ad — visionaries orchestrate" /></a></div>
+      </div>
+      <div class="creative-meta">
+        <span class="creative-tag">Campaign / Paid Social</span>
+        <div class="creative-title">YMax — Early Access Launch Campaign</div>
+        <div class="creative-desc">Brand launch assets for YMax's early access rollout — a product built by Agoric for on-chain capital orchestration. The banner announced the launch moment; the two paid social ads ran a conviction-driven narrative targeting DeFi power users, built around bold typographic contrast and the YMax brand voice.</div>
       </div>
     </div>
 
@@ -406,27 +360,87 @@
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
   <img id="lightbox-img" src="" alt="" />
 </div>
- 
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-links">
     <a href="https://twitter.com/romerojr__" target="_blank">X / Twitter</a>
     <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
-    <a href="/cdn-cgi/l/email-protection#86ebefe1f3e3eac6f4e9ebe3f4e9ecf4a8e5e9eb">Email</a>
+    <a href="mailto:miguel@romerojr.com">Email</a>
     <a href="index.html">Home</a>
   </div>
 </footer>
- 
+
 <script>
-  function openLightbox(src) {
-    document.getElementById("lightbox-img").src = src;
-    document.getElementById("lightbox").classList.add("open");
-    document.body.style.overflow = "hidden";
-  }
-  function closeLightbox() {
-    document.getElementById("lightbox").classList.remove("open");
-    document.getElementById("lightbox-img").src = "";
-    document.body.style.overflow = "";
-  }
-  document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+function openLightbox(src) {
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeLightbox() {
+  document.getElementById("lightbox").classList.remove("open");
+  document.getElementById("lightbox-img").src = "";
+  document.body.style.overflow = "";
+}
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
 </script>
+
+<script>
+(function() {
+  const canvas = document.getElementById('grainCanvas');
+  const ctx = canvas.getContext('2d');
+  function noise(x, y, seed) {
+    const n = Math.sin(x * 127.1 + y * 311.7 + seed * 74.3) * 43758.5453;
+    return n - Math.floor(n);
+  }
+  function fbm(x, y, seed) {
+    let v = 0, a = 0.5, freq = 1;
+    for (let i = 0; i < 5; i++) { v += a * noise(x * freq, y * freq, seed + i); a *= 0.5; freq *= 2.17; }
+    return v;
+  }
+  function draw() {
+    const W = canvas.width = window.innerWidth;
+    const H = canvas.height = window.innerHeight;
+    ctx.fillStyle = '#141414';
+    ctx.fillRect(0, 0, W, H);
+    const blobs = [
+      { cx: 0.12, cy: 0.18, r: 0.55, col: '220,218,214', alpha: 0.72 },
+      { cx: 0.25, cy: 0.52, r: 0.42, col: '183,22,34',   alpha: 0.55 },
+      { cx: 0.55, cy: 0.35, r: 0.45, col: '180,172,168', alpha: 0.38 },
+      { cx: 0.88, cy: 0.22, r: 0.38, col: '10,10,10',    alpha: 0.85 },
+      { cx: 0.5,  cy: 0.88, r: 0.65, col: '14,14,14',    alpha: 0.92 },
+      { cx: 0.72, cy: 0.58, r: 0.3,  col: '140,16,24',   alpha: 0.28 },
+      { cx: 0.82, cy: 0.08, r: 0.3,  col: '200,196,192', alpha: 0.3  },
+    ];
+    blobs.forEach(b => {
+      const grd = ctx.createRadialGradient(b.cx*W, b.cy*H, 0, b.cx*W, b.cy*H, b.r*Math.max(W,H));
+      grd.addColorStop(0,    `rgba(${b.col},${b.alpha})`);
+      grd.addColorStop(0.45, `rgba(${b.col},${b.alpha*0.5})`);
+      grd.addColorStop(1,    `rgba(${b.col},0)`);
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, W, H);
+    });
+    const imageData = ctx.getImageData(0, 0, W, H);
+    const data = imageData.data;
+    for (let py = 0; py < H; py++) {
+      for (let px = 0; px < W; px++) {
+        const idx = (py * W + px) * 4;
+        const g1 = noise(px, py, 3);
+        const g2 = noise(px * 1.7 + 50, py * 1.7 + 30, 9);
+        const g3 = noise(px * 0.4, py * 0.4, 17);
+        const grain = g1 * 0.55 + g2 * 0.3 + g3 * 0.15;
+        const shift = (grain - 0.5) * 62;
+        data[idx]     = Math.max(0, Math.min(255, data[idx]     + shift));
+        data[idx + 1] = Math.max(0, Math.min(255, data[idx + 1] + shift));
+        data[idx + 2] = Math.max(0, Math.min(255, data[idx + 2] + shift));
+      }
+    }
+    ctx.putImageData(imageData, 0, 0);
+  }
+  draw();
+  window.addEventListener('resize', draw);
+})();
+</script>
+
+</body>
+</html>
