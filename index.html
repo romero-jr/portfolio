@@ -114,7 +114,7 @@ html, body {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.8s ease;
+  transition: opacity 1.6s ease 0.3s;
   pointer-events: none;
 }
 .section.active {
@@ -143,9 +143,11 @@ html, body {
 /* ── SECTION 2: BENTO ── */
 .s2-bento {
   display: grid;
-  grid-template-columns: 400px 432px;
+  grid-template-columns: minmax(0, 400px) minmax(0, 432px);
   grid-template-rows: 220px 220px;
   gap: 8px;
+  max-width: 840px;
+  width: calc(100vw - 140px);
 }
 
 /* Photo — spans both rows on left */
@@ -189,11 +191,11 @@ html, body {
   margin-bottom: 12px;
 }
 .bento-main-title {
-  font-size: clamp(32px, 4.5vw, 72px);
+  font-size: clamp(28px, 3.5vw, 56px);
   font-weight: 900;
   color: #fff;
   letter-spacing: -0.04em;
-  line-height: 0.9;
+  line-height: 0.92;
   text-transform: uppercase;
 }
 
