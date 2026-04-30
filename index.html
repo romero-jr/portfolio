@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-08SGZSSHYS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-08SGZSSHYS');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Miguel Romero Jr — Portfolio</title>
@@ -140,6 +148,37 @@ html, body {
 .s1-name em {
   color: var(--accent);
   font-style: normal;
+}
+
+
+/* ── SECTION 1: QUICK LINKS ── */
+.s1-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: nameIn 1.4s ease forwards;
+  opacity: 0;
+}
+.s1-links-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+}
+.s1-link {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.s1-link:hover { color: #fff; }
+.s1-links-sep {
+  font-size: 9px;
+  color: rgba(255,255,255,0.2);
 }
 
 /* ── SECTION 2: BENTO ── */
@@ -799,7 +838,15 @@ html, body {
 
   <!-- SECTION 1: NAME -->
   <section class="section active" data-index="0">
-    <span class="s1-name">Miguel Angel Romero <em>Jr.</em></span>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:16px;">
+      <span class="s1-name">Miguel Angel Romero <em>Jr.</em></span>
+      <div class="s1-links">
+        <span class="s1-links-label">Quick Links:</span>
+        <a href="https://drive.google.com/file/d/18lUBOzM8KpzT-Lh930Ty2sbJWh1Nwelp/view?usp=sharing" target="_blank" class="s1-link">Resume</a>
+        <span class="s1-links-sep">|</span>
+        <a href="work.html" class="s1-link">Portfolio</a>
+      </div>
+    </div>
   </section>
   <!-- SECTION 2: BENTO -->
   <section class="section" data-index="1">
