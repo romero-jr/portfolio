@@ -1,436 +1,1101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-08SGZSSHYS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-08SGZSSHYS');
-</script>
- 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Miguel Romero Jr — Portfolio</title>
-<meta property="og:title" content="Miguel Romero Jr — Portfolio" />
-<meta property="og:description" content="Social Media. Terminally Online. Built for impact." />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #E6E6E6;
-    --bg-section: #dcdcdc;
-    --bg-card: #ebebeb;
-    --bg-dark: #141414;
-    --accent: #B71622;
-    --accent-light: rgba(183,22,34,0.1);
-    --accent-hover: #9a1019;
-    --text: #111111;
-    --text-muted: #4a4a4a;
-    --text-light: #7a7a7a;
-    --border: #cccccc;
-    --font: 'DM Sans', sans-serif;
-    --font-serif: 'DM Serif Display', serif;
-  }
-  html { overflow-y: scroll; scroll-behavior: smooth; }
-  html, body { min-height: 100%; background: var(--bg); color: var(--text); font-family: var(--font); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
-  body { padding-top: 56px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #141414;
+  --accent: #B71622;
+  --text: #ffffff;
+  --text-muted: rgba(255,255,255,0.45);
+  --border: rgba(255,255,255,0.1);
+  --font: 'Inter', sans-serif;
+}
 
-  /* ── HEADER ── */
-  .header {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(230,230,230,0.95); backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-    padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px;
-  }
-  .header-logo { font-family: var(--font-serif); font-size: 20px; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
-  .header-nav { display: flex; gap: 32px; }
-  .header-nav a { font-size: 12px; color: rgba(0,0,0,0.5); text-decoration: none; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.15s; }
-  .header-nav a:hover { color: var(--text); }
+html, body {
+  height: 100%;
+  background: var(--bg);
+  font-family: var(--font);
+  overflow: hidden;
+}
 
-  /* ── HERO ── */
-  .hero {
-    background: #E6E6E6;
-    position: relative;
-    height: calc(65vh - 56px);
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-  }
-  .hero img {
-    height: 85%;
-    width: auto;
-    max-width: 85%;
-    object-fit: contain;
-    object-position: center center;
-    display: block;
-  }
-  /* Subtle scroll hint */
-  .hero-scroll {
-    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 6px;
-    color: rgba(0,0,0,0.3); font-size: 10px; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    animation: bounce 2s ease-in-out infinite;
-  }
-  .hero-scroll svg { width: 18px; height: 18px; stroke: rgba(0,0,0,0.3); }
-  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
+/* ── SHARED CANVAS BG ── */
+#grainCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
 
-  .btn-primary { font-size: 13px; font-weight: 700; color: #fff; background: var(--accent); border: none; border-radius: 4px; padding: 13px 30px; text-decoration: none; display: inline-block; transition: all 0.15s; letter-spacing: 0.01em; }
-  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(183,22,34,0.3); }
-  .btn-ghost { font-size: 13px; font-weight: 500; color: var(--text-muted); border: 1px solid var(--border); border-radius: 4px; padding: 13px 30px; text-decoration: none; display: inline-block; transition: all 0.15s; }
-  .btn-ghost:hover { border-color: var(--text); color: var(--text); }
+/* ── FIXED RED CORNER FRAME ── */
+.frame-corner {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  z-index: 200;
+}
+.frame-corner--tl { top: 32px; left: 32px; border-top: 2px solid #fff; border-left: 2px solid #fff; }
+.frame-corner--tr { top: 32px; right: 32px; border-top: 2px solid #fff; border-right: 2px solid #fff; }
+.frame-corner--bl { bottom: 32px; left: 32px; border-bottom: 2px solid #fff; border-left: 2px solid #fff; }
+.frame-corner--br { bottom: 32px; right: 32px; border-bottom: 2px solid #fff; border-right: 2px solid #fff; }
 
-  /* ── ABOUT ME ── */
-  .about-inner {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 80px; align-items: start;
-  }
-  .about-headline {
-    font-family: var(--font); font-weight: 900; font-size: clamp(36px, 5vw, 64px);
-    text-transform: uppercase; color: var(--text); line-height: 0.95;
-    letter-spacing: -0.03em;
-  }
-  .about-headline em { color: var(--accent); font-style: normal; }
-  .about-body { font-size: 17px; color: var(--text-muted); line-height: 1.75; margin-bottom: 32px; }
-  .about-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+/* ── SCROLL HINT ── */
+.scroll-hint {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 200;
+  transition: opacity 0.5s;
+}
+.scroll-hint.hidden { opacity: 0; pointer-events: none; }
+.scroll-text {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
 
-  /* ── SHARED SECTION STYLES ── */
-  .section { padding: 80px 64px; }
-  .section--light { background: var(--bg); }
-  .section--alt { background: var(--bg-section); }
-  .section-inner { max-width: 1100px; margin: 0 auto; }
-  .section-eyebrow {
-    font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.12em;
-    text-transform: uppercase; margin-bottom: 8px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-eyebrow::before {
-    content: ''; width: 7px; height: 7px; border-radius: 50%;
-    background: var(--accent); display: block; flex-shrink: 0;
-  }
-  .section-title { font-family: var(--font-serif); font-size: clamp(22px, 2.8vw, 36px); color: var(--text); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 40px; }
+/* ── DOT NAV ── */
+.dots {
+  position: fixed;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 200;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+.dot.active {
+  background: #fff;
+  transform: scale(1.3);
+}
 
-  /* ── STATS ── */
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .stat { background: var(--bg-card); border: 1px solid var(--border); padding: 28px 24px; border-radius: 6px; }
-  .stat-value { font-family: var(--font-serif); font-size: 44px; color: var(--accent); display: block; margin-bottom: 6px; letter-spacing: -0.03em; line-height: 1; }
-  .stat-value.small { font-family: var(--font); font-size: 13px; font-weight: 700; padding-top: 8px; color: var(--text); line-height: 1.4; }
-  .stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; line-height: 1.5; }
-  .stat-label a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
+/* ── SECTIONS ── */
+.sections-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
 
-  /* ── SHARED LIST ROW (used for both clients + experience) ── */
-  .row-list { display: flex; flex-direction: column; gap: 2px; }
-  .row-item {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px;
-    padding: 24px 28px; display: grid; grid-template-columns: 32px 180px 1fr auto auto;
-    gap: 16px; align-items: start; transition: all 0.15s;
-  }
-  .row-item:hover { background: #fff; border-color: var(--accent); }
-  .row-num { color: var(--text-light); font-size: 11px; font-weight: 600; padding-top: 3px; }
-  .row-company { color: var(--text); font-weight: 800; font-size: 14px; padding-top: 3px; line-height: 1.3; }
-  .row-role-title { color: var(--text); font-size: 13px; font-weight: 600; margin-bottom: 6px; }
-  .row-period { color: var(--text-muted); font-size: 12px; white-space: nowrap; padding-top: 3px; }
-  .pill { display: inline-block; font-size: 10px; padding: 3px 10px; background: var(--accent-light); color: var(--accent); border: 1px solid rgba(183,22,34,0.2); text-transform: uppercase; letter-spacing: 0.06em; border-radius: 3px; font-weight: 700; white-space: nowrap; }
-  .row-desc { font-size: 12px; color: var(--text-muted); line-height: 1.8; list-style: none; }
-  .row-desc li { padding-left: 16px; position: relative; margin-bottom: 4px; }
-  .row-desc li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 10px; top: 3px; }
+.section {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+.section.active {
+  opacity: 1;
+  pointer-events: all;
+}
 
-  /* ── BRANDS ── */
-  .brands-wrap {
-    border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
-    background: var(--bg-card);
-  }
-  .brands-wrap img {
-    width: 100%; display: block;
-    filter: contrast(1.05);
-    transition: filter 0.2s;
-  }
-  .brands-wrap:hover img { filter: contrast(1.1); }
+/* ── SECTION 1: NAME ── */
+.s1-name {
+  font-family: var(--font);
+  font-size: clamp(16px, 3vw, 48px);
+  color: #fff;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
+}
+.s1-name em {
+  color: var(--accent);
+  font-style: normal;
+}
 
-  /* ── SKILLS ── */
-  .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .skill-card { background: var(--bg-card); border: 1px solid var(--border); padding: 28px 24px; border-radius: 6px; }
-  .skill-category { font-size: 11px; font-weight: 800; color: var(--text); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); display: block; }
-  .skill-list { font-size: 13px; color: var(--text-muted); line-height: 2.2; }
+/* ── SECTION 2: BENTO ── */
+.s2-bento {
+  display: grid;
+  grid-template-columns: 400px 432px;
+  grid-template-rows: 220px 220px;
+  gap: 8px;
+}
 
-  /* ── WORK ── */
-  .work-grid { display: flex; flex-direction: column; gap: 16px; }
-  .work-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 32px; }
-  .work-tag { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
-  .work-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
-  .work-desc { font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; }
+/* Photo — spans both rows on left */
+.bento-photo {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.bento-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 45% 20%;
+  display: block;
+}
 
-  /* ── TWEETS ── */
-  .tweet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+/* Title card */
+.bento-title {
+  grid-column: 2;
+  grid-row: 1;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+  padding: 28px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.bento-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 12px;
+}
+.bento-main-title {
+  font-size: clamp(32px, 4.5vw, 72px);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
 
-  /* ── THE WORK CTA ── */
-  .work-cta-section {
-    background: var(--bg-dark);
-    padding: 80px 64px;
-  }
-  .work-cta-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 80px; align-items: center;
-  }
-  .work-cta-eyebrow {
-    font-size: 11px; font-weight: 700; color: var(--accent);
-    letter-spacing: 0.14em; text-transform: uppercase;
-    margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
-  }
-  .work-cta-eyebrow::before {
-    content: ''; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); display: block;
-  }
-  .work-cta-title {
-    font-family: var(--font); font-weight: 900;
-    font-size: clamp(56px, 8vw, 110px);
-    color: #fff; line-height: 0.9; letter-spacing: -0.04em;
-    text-transform: uppercase;
-  }
-  .work-cta-title em { color: var(--accent); font-style: normal; }
-  .work-cta-body {
-    font-size: 16px; color: rgba(255,255,255,0.45);
-    line-height: 1.8; margin-bottom: 32px;
-  }
-  .work-cta-btn {
-    display: inline-block; font-size: 13px; font-weight: 700;
-    color: #fff; background: var(--accent);
-    padding: 14px 32px; border-radius: 4px;
-    text-decoration: none; letter-spacing: 0.01em;
-    transition: all 0.15s;
-  }
-  .work-cta-btn:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(183,22,34,0.35); }
+/* Disciplines card */
+.bento-disciplines {
+  grid-column: 2;
+  grid-row: 2;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+  padding: 28px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-  /* ── FOOTER ── */
-  .footer { background: #d8d8d8; padding: 32px 64px; display: flex; justify-content: center; align-items: center; font-size: 13px; color: rgba(0,0,0,0.5); border-top: 1px solid rgba(0,0,0,0.1); }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a { color: rgba(0,0,0,0.5); text-decoration: none; transition: color 0.15s; }
-  .footer-links a:hover { color: #111; }
+.bento-para {
+  font-size: 12px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.5);
+  font-weight: 400;
+}
 
-  /* ── ANIMATIONS ── */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.65s ease, transform 0.65s ease;
-  }
-  .fade-up.visible { opacity: 1; transform: translateY(0); }
-  .stagger-children > * {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  .stagger-children.visible > *:nth-child(1) { transition-delay: 0.05s; }
-  .stagger-children.visible > *:nth-child(2) { transition-delay: 0.15s; }
-  .stagger-children.visible > *:nth-child(3) { transition-delay: 0.25s; }
-  .stagger-children.visible > *:nth-child(4) { transition-delay: 0.35s; }
-  .stagger-children.visible > * { opacity: 1; transform: translateY(0); }
+.bento-disciplines-inline {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 14px;
+}
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 960px) {
-    .header { padding: 0 20px; } .header-nav { gap: 16px; }
-    .hero { height: 50vh; }
-    .work-cta-section { padding: 56px 20px; }
-    .work-cta-inner { grid-template-columns: 1fr; gap: 32px; }
-    .about-inner { grid-template-columns: 1fr; gap: 32px; }
-    .section { padding: 56px 20px; }
-    .skills-grid { grid-template-columns: repeat(2, 1fr); }
-    .tweet-grid { grid-template-columns: 1fr; }
-    .row-item { grid-template-columns: 1fr; gap: 6px; }
-    .footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
-    .footer-links { justify-content: center; flex-wrap: wrap; }
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.3; }
+  50% { opacity: 0.9; }
+}
+
+/* ── SECTION 3: BRANDS ── */
+.s3-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.s3-header {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.s3-header::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.s3-bento {
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+  width: 840px;
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.s3-bento img {
+  width: 90%;
+  display: block;
+  border-radius: 2px;
+}
+
+/* ── SECTION 4: THE WORK ── */
+.s4-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: 840px;
+  width: 840px;
+}
+
+.s4-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.s4-eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.s4-card {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+  padding: 48px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.s4-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.s4-title {
+  font-size: clamp(64px, 9vw, 130px);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  text-transform: uppercase;
+}
+
+.s4-title em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.s4-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.75;
+  max-width: 320px;
+}
+
+.s4-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+  padding: 14px 28px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+.s4-btn:hover {
+  background: #9a1019;
+  transform: translateY(-1px);
+}
+
+.s4-btn-arrow {
+  font-size: 14px;
+  transition: transform 0.2s;
+}
+.s4-btn:hover .s4-btn-arrow {
+  transform: translateX(3px);
+}
+
+.s4-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+}
+
+.s4-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 16px;
+  border-left: 2px solid var(--accent);
+}
+
+.s4-stat-value {
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.s4-stat-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .s2-bento {
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 200px 200px !important;
+    width: calc(100vw - 80px) !important;
   }
-  @media (max-width: 560px) {
-    .skills-grid { grid-template-columns: 1fr; }
-    .hero { height: 40vh; }
+  .s3-bento {
+    width: calc(100vw - 80px) !important;
   }
+  .s4-wrap {
+    width: calc(100vw - 80px) !important;
+    max-width: calc(100vw - 80px) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .s2-bento {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 240px auto auto !important;
+    width: calc(100vw - 48px) !important;
+  }
+  .bento-photo {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+  .bento-title {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+  .bento-disciplines {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+  }
+  .s3-bento {
+    width: calc(100vw - 48px) !important;
+  }
+  .s4-wrap {
+    width: calc(100vw - 48px) !important;
+    max-width: calc(100vw - 48px) !important;
+  }
+  .s4-card > div {
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+  .s4-title {
+    font-size: clamp(48px, 14vw, 80px) !important;
+  }
+  .frame-corner {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .frame-corner--tl { top: 16px !important; left: 16px !important; }
+  .frame-corner--tr { top: 16px !important; right: 16px !important; }
+  .frame-corner--bl { bottom: 16px !important; left: 16px !important; }
+  .frame-corner--br { bottom: 16px !important; right: 16px !important; }
+}
+
+/* ── SECTION 5: EXPERIENCE ── */
+.s5-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 840px;
+  max-width: calc(100vw - 80px);
+}
+
+.s5-header {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.s5-header::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.s5-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+}
+
+.s5-item {
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s, background 0.2s;
+  cursor: default;
+  justify-content: space-between;
+}
+.s5-item:hover {
+  border-color: rgba(183,22,34,0.5);
+  background: rgba(255,255,255,0.07);
+}
+
+.s5-num {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+
+.s5-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.s5-company {
+  font-size: 13px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.s5-center {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.s5-role {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.04em;
+}
+
+.s5-desc {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.6;
+}
+
+.s5-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.s5-period {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.s5-pill {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(183,22,34,0.35);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+@media (max-width: 640px) {
+  .s5-list {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.s5-bullets {
+  list-style: none;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.s5-bullets li {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.6;
+  padding-left: 14px;
+  position: relative;
+}
+.s5-bullets li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 9px;
+  top: 2px;
+}
+
+/* ── SECTION 6: SKILLS ── */
+.s6-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 840px;
+  max-width: calc(100vw - 80px);
+}
+
+.s6-header {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.s6-header::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.s6-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+}
+
+.s6-card {
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.s6-card:hover {
+  border-color: rgba(183,22,34,0.5);
+  background: rgba(255,255,255,0.07);
+}
+
+.s6-category {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent);
+  display: block;
+}
+
+.s6-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.s6-skill {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.s6-skill::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* ── FOOTER ── */
+.s6-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding-top: 16px;
+}
+
+.s6-footer-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-right: 4px;
+}
+
+.s6-footer-link {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.s6-footer-link:hover {
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .s6-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.end-btn {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.2s, opacity 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.7;
+}
+.end-btn:hover { opacity: 1; color: #fff; }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <a href="#" class="header-logo">MRJ</a>
-  <nav class="header-nav">
-    <a href="#about">About</a>
-    <a href="work.html">Work</a>
-    <a href="#experience">Experience</a>
-  </nav>
-</header>
+<canvas id="grainCanvas"></canvas>
 
-<!-- HERO -->
-<section class="hero">
-  <img src="image06.png" alt="Miguel Romero Jr" />
-  <div class="hero-scroll">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
-  </div>
-</section>
+<!-- FIXED FRAME -->
+<div class="frame-corner frame-corner--tl"></div>
+<div class="frame-corner frame-corner--tr"></div>
+<div class="frame-corner frame-corner--bl"></div>
+<div class="frame-corner frame-corner--br"></div>
 
-<!-- ABOUT ME -->
-<section class="section section--light" id="about">
-  <div class="section-inner">
-    <div class="about-inner fade-up">
-      <div>
-        <div class="about-headline">About<br><em>Me.</em></div>
+<!-- SCROLL HINT -->
+<div class="scroll-hint" id="scrollHint">
+  <span class="scroll-text">Scroll</span>
+  <div class="scroll-line"></div>
+</div>
+
+<!-- DOT NAV -->
+<div class="dots" id="dots">
+  <div class="dot active" data-index="0"></div>
+  <div class="dot" data-index="1"></div>
+  <div class="dot" data-index="2"></div>
+  <div class="dot" data-index="3"></div>
+  <div class="dot" data-index="4"></div>
+  <div class="dot" data-index="5"></div>
+</div>
+
+<!-- SECTIONS -->
+<div class="sections-wrap">
+
+  <!-- SECTION 1: NAME -->
+  <section class="section active" data-index="0">
+    <span class="s1-name">Miguel Angel Romero <em>Jr.</em></span>
+  </section>
+  <!-- SECTION 2: BENTO -->
+  <section class="section" data-index="1">
+    <div style="display:flex; flex-direction:column; align-items:flex-start; gap:12px;">
+      <div style="font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#fff; display:flex; align-items:center; gap:10px;">
+        <span style="display:block; width:20px; height:2px; background:var(--accent);"></span>
+        About Me
       </div>
-      <div>
-        <p class="about-body">A computer scientist who took his pragmatic mindset and dove into the world of marketing and communications. I've collaborated with cross-functional teams across diverse organizations, leading some of the most ambitious campaigns — regardless of budget. I believe that exceptional marketing stems from powerful narratives and thoughtful, strategic design.</p>
-        <div class="about-actions">
-          <a href="https://drive.google.com/file/d/18lUBOzM8KpzT-Lh930Ty2sbJWh1Nwelp/view?usp=sharing" target="_blank" class="btn-primary">Resume (PDF) ↗</a>
-          <a href="mailto:miguel@romerojr.com" class="btn-ghost">Get in Touch</a>
+    <div class="s2-bento">
+      <div class="bento-photo">
+        <img src="pfp.png" alt="Miguel Romero Jr" />
+      </div>
+      <div class="bento-title">
+        <div class="bento-main-title">Full Stack<br>Marketer</div>
+        <div style="margin-top:10px; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);">GTM &nbsp;|&nbsp; Content &nbsp;|&nbsp; Social &nbsp;|&nbsp; Community &nbsp;|&nbsp; AI</div>
+      </div>
+      <div class="bento-disciplines">
+        <p class="bento-para">A computer scientist who took his pragmatic mindset and dove into the world of marketing and communications. I've collaborated with cross-functional teams across diverse organizations, leading some of the most ambitious campaigns — regardless of budget. I believe that exceptional marketing stems from powerful narratives and thoughtful, strategic design.</p>
+      </div>
+    </div>
+    </div>
+  </section>
+  <!-- SECTION 3: BRANDS -->
+  <section class="section" data-index="2">
+    <div class="s3-wrap">
+      <div class="s3-header">Brands I've Worked With</div>
+      <div class="s3-bento">
+        <img src="jobs.png" alt="Brands" />
+      </div>
+    </div>
+  </section>
+  <!-- SECTION 4: THE WORK -->
+  <section class="section" data-index="3">
+    <div class="s4-wrap">
+      <div class="s4-eyebrow">Visual Portfolio</div>
+      <div class="s4-card">
+        <div style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:40px;">
+          <div class="s4-title">The<br><em>Work.</em></div>
+          <div style="display:flex; flex-direction:column; gap:20px; max-width:320px;">
+            <p class="s4-desc">Campaigns, launches, live streams, and social content built across Agoric, Joyn, Gemini, and Nifty Gateway. Videos, design assets, and standout social moments.</p>
+            <a href="work.html" class="s4-btn">View the Work <span class="s4-btn-arrow">→</span></a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- BRANDS -->
-<section class="section section--light" id="brands">
-  <div class="section-inner">
-    <div class="section-eyebrow">Brands</div>
-    <div class="section-title">Brands I've Worked With</div>
-    <div class="brands-wrap fade-up">
-      <img src="image01.png" alt="Brands including Joyn, Nifty Gateway, Gemini, Agoric, The Weeknd, Eminem, Steve Aoki, Paris Hilton, Kadena, HP, Raspberry Pi, Code.org, Adim, OKX, StormX, Horizen" />
-    </div>
-  </div>
-</section>
 
-<!-- THE WORK CTA -->
-<section class="work-cta-section">
-  <div class="work-cta-inner fade-up">
-    <div class="work-cta-left">
-      <div class="work-cta-eyebrow">Visual Portfolio</div>
-      <div class="work-cta-title">The<br><em>Work.</em></div>
-    </div>
-    <div class="work-cta-right">
-      <p class="work-cta-body">Campaigns, launches, live streams, and social content built across Agoric, Joyn, Gemini, and Nifty Gateway. Videos, design assets, and standout social moments — all in one place.</p>
-      <a href="work.html" class="work-cta-btn">View the Work →</a>
-    </div>
-  </div>
-</section>
+  <!-- SECTION 5: EXPERIENCE -->
+  <section class="section" data-index="4">
+    <div class="s5-wrap">
+      <div class="s5-header">Recent Experience</div>
+      <div class="s5-list">
 
-<!-- EXPERIENCE -->
-<section class="section section--alt" id="experience">
-  <div class="section-inner">
-    <div class="section-eyebrow">Background</div>
-    <div class="section-title">Recent Experience</div>
-    <div class="row-list stagger-children">
-
-      <div class="row-item">
-        <span class="row-num">01</span>
-        <span class="row-company">Agoric</span>
-        <div>
-          <div class="row-role-title">Community Marketing Lead</div>
-          <ul class="row-desc">
-            <li>Co-owned social strategy and content across X, LinkedIn, and community channels — defined voice, content pillars, and calendar cadence that drove 40% engagement growth</li>
-            <li>Supported executive social profiles with reactive opportunities, ghostwritten posts, and strategic positioning — expanding leadership reach 45%</li>
-            <li>Built AI-native content workflows that 3x'd output and cut production time 70% — tracked social metrics weekly and iterated on messaging, formats, and channel mix</li>
-          </ul>
+        <div class="s5-item">
+          <div class="s5-top"><span class="s5-num">01</span><span class="s5-company">Agoric</span></div>
+          <div class="s5-center">
+            <div class="s5-role">Community Marketing Lead</div>
+            <ul class="s5-bullets">
+              <li>Co-owned social strategy and content across X, LinkedIn, and community channels — defined voice, content pillars, and calendar cadence that drove 40% engagement growth</li>
+              <li>Supported executive social profiles with reactive opportunities, ghostwritten posts, and strategic positioning — expanding leadership reach 45%</li>
+              <li>Built AI-native content workflows that 3x'd output and cut production time 70% — tracked social metrics weekly and iterated on messaging, formats, and channel mix</li>
+            </ul>
+          </div>
+          <div class="s5-right">
+            <span class="s5-period">Sep 2024 – Mar 2026</span>
+            <span class="s5-pill">Full-time</span>
+          </div>
         </div>
-        <span class="row-period">Sep 2024–Mar 2026</span>
-        <span class="pill">Full-time</span>
-      </div>
 
-      <div class="row-item">
-        <span class="row-num">02</span>
-        <span class="row-company">Joyn</span>
-        <div>
-          <div class="row-role-title">Marketing Lead</div>
-          <ul class="row-desc">
-            <li>Co-owned all social channels — produced written content, visuals, and partnered with designers on higher-lift assets for product launches that doubled engagement</li>
-            <li>Managed community monitoring and issue routing — flagged and escalated social media risks in real time while reducing support volume 30%</li>
-            <li>Built launch plans for 3 product releases — activating internal teams, influencer partners, and paid campaigns in coordinated rollouts</li>
-          </ul>
+        <div class="s5-item">
+          <div class="s5-top"><span class="s5-num">02</span><span class="s5-company">Joyn</span></div>
+          <div class="s5-center">
+            <div class="s5-role">Marketing Lead</div>
+            <ul class="s5-bullets">
+              <li>Co-owned all social channels — produced written content, visuals, and partnered with designers on higher-lift assets for product launches that doubled engagement</li>
+              <li>Managed community monitoring and issue routing — flagged and escalated social media risks in real time while reducing support volume 30%</li>
+              <li>Built launch plans for 3 product releases — activating internal teams, influencer partners, and paid campaigns in coordinated rollouts</li>
+            </ul>
+          </div>
+          <div class="s5-right">
+            <span class="s5-period">Apr 2023 – Mar 2024</span>
+            <span class="s5-pill">Full-time</span>
+          </div>
         </div>
-        <span class="row-period">Apr 2023–Mar 2024</span>
-        <span class="pill">Full-time</span>
-      </div>
 
-      <div class="row-item">
-        <span class="row-num">03</span>
-        <span class="row-company">Gemini &amp; Nifty Gateway</span>
-        <div>
-          <div class="row-role-title">Marketing Manager</div>
-          <ul class="row-desc">
-            <li>Promoted from Social Media Specialist to Marketing Manager in 6 months — co-owned LinkedIn, X, Instagram, and YouTube for a 13M+ user fintech brand, contributing to 30% revenue growth</li>
-            <li>Managed 6+ agency partners and a $50K–$100K monthly budget across paid, PR, and creative — established social metrics frameworks and reported performance insights</li>
-            <li>Produced written content, memes, and designed visuals — with the range to write a clever skit and the judgment to know when the legal team needs a heads up</li>
-          </ul>
+        <div class="s5-item">
+          <div class="s5-top"><span class="s5-num">03</span><span class="s5-company">Gemini &amp; Nifty Gateway</span></div>
+          <div class="s5-center">
+            <div class="s5-role">Marketing Manager</div>
+            <ul class="s5-bullets">
+              <li>Promoted from Social Media Specialist to Marketing Manager in 6 months — co-owned LinkedIn, X, Instagram, and YouTube for a 13M+ user fintech brand, contributing to 30% revenue growth</li>
+              <li>Managed 6+ agency partners and a $50K–$100K monthly budget across paid, PR, and creative — established social metrics frameworks and reported performance insights</li>
+              <li>Produced written content, memes, and designed visuals — with the range to write a clever skit and the judgment to know when the legal team needs a heads up</li>
+            </ul>
+          </div>
+          <div class="s5-right">
+            <span class="s5-period">Feb 2021 – Aug 2022</span>
+            <span class="s5-pill">Full-time</span>
+          </div>
         </div>
-        <span class="row-period">Feb 2021–Aug 2022</span>
-        <span class="pill">Full-time</span>
-      </div>
 
-      <div class="row-item">
-        <span class="row-num">04</span>
-        <span class="row-company">Kadena</span>
-        <div>
-          <div class="row-role-title">Marketing Manager</div>
-          <ul class="row-desc">
-            <li>Promoted from Community Manager to Marketing Manager in 1 year — grew social following from zero to 250K across X, LinkedIn, Reddit, and Facebook while managing all channel strategy and content production</li>
-            <li>Led end-to-end production of technical and non-technical content — AMAs, blog posts, graphics, and videos — and executed email marketing campaigns to a 30K subscriber list covering ecosystem updates and partnerships</li>
-            <li>Sourced blockchain industry co-marketing partners to build brand authority, coordinated UGC campaigns with Engineering to improve developer retention, and planned industry events including booth design, event spaces, and merchandise</li>
-          </ul>
+        <div class="s5-item">
+          <div class="s5-top"><span class="s5-num">04</span><span class="s5-company">Kadena</span></div>
+          <div class="s5-center">
+            <div class="s5-role">Marketing Manager</div>
+            <ul class="s5-bullets">
+              <li>Promoted from Community Manager to Marketing Manager in 1 year — grew social from zero to 250K across X, LinkedIn, Reddit, and Facebook</li>
+              <li>Led end-to-end content production — AMAs, blog posts, graphics, videos, and email campaigns to a 30K subscriber list</li>
+              <li>Sourced co-marketing partners, coordinated UGC campaigns with Engineering, and planned industry events including booth design and merchandise</li>
+            </ul>
+          </div>
+          <div class="s5-right">
+            <span class="s5-period">Sep 2018 – Jan 2021</span>
+            <span class="s5-pill">Full-time</span>
+          </div>
         </div>
-        <span class="row-period">Sep 2018–Jan 2021</span>
-        <span class="pill">Full-time</span>
+
+      </div></div>
+  </section>
+
+
+  <!-- SECTION 6: SKILLS -->
+  <section class="section" data-index="5">
+    <div class="s6-wrap">
+      <div class="s6-header">Skills</div>
+      <div class="s6-grid">
+
+        <div class="s6-card">
+          <span class="s6-category">Social & Community</span>
+          <div class="s6-skills">
+            <span class="s6-skill">X / Twitter</span>
+            <span class="s6-skill">Reddit</span>
+            <span class="s6-skill">LinkedIn</span>
+            <span class="s6-skill">Instagram</span>
+            <span class="s6-skill">Community Moderation</span>
+            <span class="s6-skill">Discord / Telegram</span>
+          </div>
+        </div>
+
+        <div class="s6-card">
+          <span class="s6-category">Strategy & Growth</span>
+          <div class="s6-skills">
+            <span class="s6-skill">GTM Strategy</span>
+            <span class="s6-skill">Brand Positioning</span>
+            <span class="s6-skill">Launch Playbooks</span>
+            <span class="s6-skill">Audience Development</span>
+            <span class="s6-skill">Performance Reporting</span>
+            <span class="s6-skill">Competitive Analysis</span>
+          </div>
+        </div>
+
+        <div class="s6-card">
+          <span class="s6-category">Content & Copy</span>
+          <div class="s6-skills">
+            <span class="s6-skill">Brand Voice</span>
+            <span class="s6-skill">Social Copywriting</span>
+            <span class="s6-skill">Cultural Fluency</span>
+            <span class="s6-skill">Editorial Calendars</span>
+            <span class="s6-skill">Campaign Messaging</span>
+            <span class="s6-skill">Narrative Strategy</span>
+          </div>
+        </div>
+
+        <div class="s6-card">
+          <span class="s6-category">Tools & AI</span>
+          <div class="s6-skills">
+            <span class="s6-skill">Claude / ChatGPT</span>
+            <span class="s6-skill">Midjourney / Comfy UI</span>
+            <span class="s6-skill">HubSpot / Mailchimp</span>
+            <span class="s6-skill">Google Analytics</span>
+            <span class="s6-skill">Photoshop / Figma</span>
+            <span class="s6-skill">Capcut / Premiere</span>
+          </div>
+        </div>
+
       </div>
 
+      <div class="s6-footer">
+        <span class="s6-footer-label">Connect with me:</span>
+        <a href="https://twitter.com/romerojr__" target="_blank" class="s6-footer-link">X / Twitter</a>
+        <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank" class="s6-footer-link">LinkedIn</a>
+        <a href="mailto:miguel@romerojr.com" class="s6-footer-link">Email</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- SKILLS -->
-<section class="section section--light">
-  <div class="section-inner">
-    <div class="section-eyebrow">Competencies</div>
-    <div class="section-title">Skills</div>
-    <div class="skills-grid stagger-children">
-      <div class="skill-card">
-        <div class="skill-category">Social & Community</div>
-        <div class="skill-list">X / Twitter<br>Reddit<br>LinkedIn<br>Instagram<br>Community Moderation<br>Discord / Telegram</div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-category">Strategy & Growth</div>
-        <div class="skill-list">GTM Strategy<br>Brand Positioning<br>Launch Playbooks<br>Audience Development<br>Performance Reporting<br>Competitive Analysis</div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-category">Content & Copy</div>
-        <div class="skill-list">Brand Voice<br>Social Copywriting<br>Cultural Fluency<br>Editorial Calendars<br>Campaign Messaging<br>Narrative Strategy</div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-category">Tools & AI</div>
-        <div class="skill-list">Claude / ChatGPT<br>Midjourney / Comfy UI<br>HubSpot / Mailchimp<br>Google Analytics<br>Photoshop / Figma<br>Capcut / Premiere</div>
-      </div>
-    </div>
-  </div>
-</section>
+</div>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-links">
-    <a href="https://twitter.com/romerojr__" target="_blank">X / Twitter</a>
-    <a href="https://www.linkedin.com/in/miguelromerojr/" target="_blank">LinkedIn</a>
-    <a href="mailto:miguel@romerojr.com">Email</a>
-  </div>
-</footer>
 <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add("visible");
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
-  document.querySelectorAll(".stagger-children").forEach(el => observer.observe(el));
+  const sections = document.querySelectorAll('.section');
+  const dots = document.querySelectorAll('.dot');
+  const scrollHint = document.getElementById('scrollHint');
+  let current = 0;
+  let isAnimating = false;
+
+  function goTo(index) {
+    if (index === current || isAnimating) return;
+    if (index < 0 || index >= sections.length) return;
+    isAnimating = true;
+    sections[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = index;
+    sections[current].classList.add('active');
+    dots[current].classList.add('active');
+    if (current === sections.length - 1) {
+      scrollHint.classList.remove('hidden');
+      scrollHint.innerHTML = '<div style="width:1px;height:40px;background:rgba(255,255,255,0.5);margin-bottom:8px;"></div><span id="endBtn" style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.8);cursor:pointer;">&#8593;&nbsp; End</span>';
+      setTimeout(() => {
+        const btn = document.getElementById('endBtn');
+        if (btn) btn.addEventListener('click', () => goTo(0));
+      }, 50);
+    } else {
+      scrollHint.innerHTML = '<span class="scroll-text">Scroll</span><div class="scroll-line"></div>';
+      scrollHint.classList.remove('hidden');
+    }
+    setTimeout(() => { isAnimating = false; }, 900);
+  }
+
+  window.addEventListener('wheel', (e) => {
+    if (e.deltaY > 30) goTo(current + 1);
+    else if (e.deltaY < -30) goTo(current - 1);
+  }, { passive: true });
+
+  let touchStartY = 0;
+  window.addEventListener('touchstart', (e) => { touchStartY = e.touches[0].clientY; }, { passive: true });
+  window.addEventListener('touchend', (e) => {
+    const diff = touchStartY - e.changedTouches[0].clientY;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+  }, { passive: true });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => goTo(parseInt(dot.dataset.index)));
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') goTo(current + 1);
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') goTo(current - 1);
+  });
 </script>
+
+<script>
+(function() {
+  const canvas = document.getElementById('grainCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function noise(x, y, seed) {
+    const n = Math.sin(x * 127.1 + y * 311.7 + seed * 74.3) * 43758.5453;
+    return n - Math.floor(n);
+  }
+
+  function fbm(x, y, seed) {
+    let v = 0, a = 0.5, freq = 1;
+    for (let i = 0; i < 5; i++) {
+      v += a * noise(x * freq, y * freq, seed + i);
+      a *= 0.5; freq *= 2.17;
+    }
+    return v;
+  }
+
+  function draw() {
+    const W = canvas.width = window.innerWidth;
+    const H = canvas.height = window.innerHeight;
+
+    ctx.fillStyle = '#141414';
+    ctx.fillRect(0, 0, W, H);
+
+    const blobs = [
+      { cx: 0.12, cy: 0.18, r: 0.55, col: '220,218,214', alpha: 0.72 },
+      { cx: 0.25, cy: 0.52, r: 0.42, col: '183,22,34',   alpha: 0.55 },
+      { cx: 0.55, cy: 0.35, r: 0.45, col: '180,172,168', alpha: 0.38 },
+      { cx: 0.88, cy: 0.22, r: 0.38, col: '10,10,10',    alpha: 0.85 },
+      { cx: 0.5,  cy: 0.88, r: 0.65, col: '14,14,14',    alpha: 0.92 },
+      { cx: 0.72, cy: 0.58, r: 0.3,  col: '140,16,24',   alpha: 0.28 },
+      { cx: 0.82, cy: 0.08, r: 0.3,  col: '200,196,192', alpha: 0.3  },
+    ];
+
+    blobs.forEach(b => {
+      const grd = ctx.createRadialGradient(
+        b.cx * W, b.cy * H, 0,
+        b.cx * W, b.cy * H, b.r * Math.max(W, H)
+      );
+      grd.addColorStop(0,    `rgba(${b.col},${b.alpha})`);
+      grd.addColorStop(0.45, `rgba(${b.col},${b.alpha * 0.5})`);
+      grd.addColorStop(1,    `rgba(${b.col},0)`);
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, W, H);
+    });
+
+    const imageData = ctx.getImageData(0, 0, W, H);
+    const data = imageData.data;
+    for (let py = 0; py < H; py++) {
+      for (let px = 0; px < W; px++) {
+        const idx = (py * W + px) * 4;
+        const g1 = noise(px, py, 3);
+        const g2 = noise(px * 1.7 + 50, py * 1.7 + 30, 9);
+        const g3 = noise(px * 0.4, py * 0.4, 17);
+        const grain = g1 * 0.55 + g2 * 0.3 + g3 * 0.15;
+        const shift = (grain - 0.5) * 62;
+        data[idx]     = Math.max(0, Math.min(255, data[idx]     + shift));
+        data[idx + 1] = Math.max(0, Math.min(255, data[idx + 1] + shift));
+        data[idx + 2] = Math.max(0, Math.min(255, data[idx + 2] + shift));
+      }
+    }
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  draw();
+  window.addEventListener('resize', draw);
+})();
+</script>
+
 </body>
 </html>
