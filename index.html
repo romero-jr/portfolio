@@ -134,6 +134,8 @@ html, body {
   white-space: nowrap;
   position: relative;
   z-index: 2;
+  animation: nameIn 1.2s ease forwards;
+  opacity: 0;
 }
 .s1-name em {
   color: var(--accent);
@@ -143,11 +145,11 @@ html, body {
 /* ── SECTION 2: BENTO ── */
 .s2-bento {
   display: grid;
-  grid-template-columns: minmax(0, 400px) minmax(0, 432px);
-  grid-template-rows: 220px 220px;
+  grid-template-columns: minmax(0, 460px) minmax(0, 500px);
+  grid-template-rows: 250px 250px;
   gap: 8px;
-  max-width: 840px;
-  width: calc(100vw - 140px);
+  max-width: 968px;
+  width: calc(100vw - 120px);
 }
 
 /* Photo — spans both rows on left */
@@ -229,6 +231,11 @@ html, body {
   margin-bottom: 14px;
 }
 
+@keyframes nameIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes scrollPulse {
   0%,100% { opacity: 0.3; }
   50% { opacity: 0.9; }
@@ -266,7 +273,7 @@ html, body {
   border: 1px solid var(--border);
   background: rgba(20,20,20,0.55);
   backdrop-filter: blur(8px);
-  width: 840px;
+  width: 968px;
   padding: 32px 40px;
   display: flex;
   align-items: center;
@@ -285,8 +292,8 @@ html, body {
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
-  max-width: 840px;
-  width: 840px;
+  max-width: 968px;
+  width: 968px;
 }
 
 .s4-eyebrow {
@@ -421,6 +428,12 @@ html, body {
     width: calc(100vw - 80px) !important;
     max-width: calc(100vw - 80px) !important;
   }
+  .s5-wrap {
+    width: calc(100vw - 80px) !important;
+  }
+  .s6-wrap {
+    width: calc(100vw - 80px) !important;
+  }
 }
 
 @media (max-width: 640px) {
@@ -471,7 +484,7 @@ html, body {
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-  width: 840px;
+  width: 968px;
   max-width: calc(100vw - 80px);
 }
 
@@ -620,7 +633,7 @@ html, body {
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-  width: 840px;
+  width: 968px;
   max-width: calc(100vw - 80px);
 }
 
