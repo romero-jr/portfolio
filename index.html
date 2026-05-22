@@ -45,7 +45,7 @@ html, body {
   mix-blend-mode: hard-light;
 }
 
-/* ── FIXED RED CORNER FRAME ── */
+/* ── FIXED CORNER FRAME ── */
 .frame-corner {
   position: fixed;
   width: 36px;
@@ -133,7 +133,34 @@ html, body {
   pointer-events: all;
 }
 
+/* ── SHARED SECTION EYEBROW ── */
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
 /* ── SECTION 1: NAME ── */
+.s1-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
 .s1-name {
   font-family: var(--font);
   font-size: clamp(16px, 3vw, 48px);
@@ -153,8 +180,6 @@ html, body {
   font-style: normal;
 }
 
-
-/* ── SECTION 1: QUICK LINKS ── */
 .s1-links {
   display: flex;
   align-items: center;
@@ -185,6 +210,13 @@ html, body {
 }
 
 /* ── SECTION 2: BENTO ── */
+.s2-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
 .s2-bento {
   display: grid;
   grid-template-columns: minmax(0, 460px) minmax(0, 500px);
@@ -194,7 +226,6 @@ html, body {
   width: calc(100vw - 120px);
 }
 
-/* Photo — spans both rows on left */
 .bento-photo {
   grid-column: 1;
   grid-row: 1 / 3;
@@ -211,7 +242,6 @@ html, body {
   display: block;
 }
 
-/* Title card */
 .bento-title {
   grid-column: 2;
   grid-row: 1;
@@ -234,8 +264,15 @@ html, body {
   line-height: 0.92;
   text-transform: uppercase;
 }
+.bento-subtitle {
+  margin-top: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
 
-/* Disciplines card */
 .bento-disciplines {
   grid-column: 2;
   grid-row: 2;
@@ -248,22 +285,11 @@ html, body {
   flex-direction: column;
   justify-content: center;
 }
-
 .bento-para {
   font-size: 12px;
   line-height: 1.75;
   color: rgba(255,255,255,0.5);
   font-weight: 400;
-}
-
-@keyframes nameIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes scrollPulse {
-  0%,100% { opacity: 0.3; }
-  50% { opacity: 0.9; }
 }
 
 /* ── SECTION 3: BRANDS ── */
@@ -273,26 +299,6 @@ html, body {
   align-items: flex-start;
   gap: 16px;
 }
-
-.s3-header {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.s3-header::before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: var(--accent);
-}
-
 .s3-bento {
   border-radius: 4px;
   border: 1px solid var(--border);
@@ -304,7 +310,6 @@ html, body {
   align-items: center;
   justify-content: center;
 }
-
 .s3-bento img {
   width: 90%;
   display: block;
@@ -320,25 +325,6 @@ html, body {
   max-width: 968px;
   width: 968px;
 }
-
-.s4-eyebrow {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.s4-eyebrow::before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: var(--accent);
-}
-
 .s4-card {
   width: 100%;
   border-radius: 4px;
@@ -350,7 +336,13 @@ html, body {
   align-items: center;
   justify-content: center;
 }
-
+.s4-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
 .s4-title {
   font-size: clamp(64px, 9vw, 130px);
   font-weight: 900;
@@ -359,19 +351,21 @@ html, body {
   line-height: 0.85;
   text-transform: uppercase;
 }
-
 .s4-title em {
   color: var(--accent);
   font-style: normal;
 }
-
+.s4-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 320px;
+}
 .s4-desc {
   font-size: 13px;
   color: rgba(255,255,255,0.4);
   line-height: 1.75;
-  max-width: 320px;
 }
-
 .s4-btn {
   display: inline-flex;
   align-items: center;
@@ -393,89 +387,12 @@ html, body {
   background: #9a1019;
   transform: translateY(-1px);
 }
-
 .s4-btn-arrow {
   font-size: 14px;
   transition: transform 0.2s;
 }
 .s4-btn:hover .s4-btn-arrow {
   transform: translateX(3px);
-}
-
-/* ── RESPONSIVE ── */
-/* ── RESPONSIVE: TABLET ── */
-@media (max-width: 900px) {
-  .s1-name { font-size: clamp(14px, 4vw, 32px) !important; white-space: normal !important; text-align: center; }
-  .s2-bento {
-    grid-template-columns: 1fr 1fr !important;
-    grid-template-rows: 200px 200px !important;
-    width: calc(100vw - 80px) !important;
-  }
-  .s3-bento { width: calc(100vw - 80px) !important; }
-  .s4-wrap { width: calc(100vw - 80px) !important; max-width: calc(100vw - 80px) !important; }
-  .s5-wrap { width: calc(100vw - 80px) !important; }
-  .s6-wrap { width: calc(100vw - 80px) !important; }
-  .dots { right: 16px !important; }
-}
-
-/* ── RESPONSIVE: MOBILE ── */
-@media (max-width: 640px) {
-  /* Name section */
-  .s1-name {
-    font-size: clamp(22px, 7vw, 36px) !important;
-    white-space: normal !important;
-    text-align: center;
-    line-height: 1.2 !important;
-  }
-  .s1-links { flex-wrap: wrap; justify-content: center; }
-
-  /* Corners */
-  .frame-corner { width: 20px !important; height: 20px !important; }
-  .frame-corner--tl { top: 12px !important; left: 12px !important; }
-  .frame-corner--tr { top: 12px !important; right: 12px !important; }
-  .frame-corner--bl { bottom: 12px !important; left: 12px !important; }
-  .frame-corner--br { bottom: 12px !important; right: 12px !important; }
-
-  /* Dots */
-  .dots { right: 10px !important; }
-
-  /* Section 2: About — single column stack */
-  .s2-bento {
-    grid-template-columns: 1fr !important;
-    grid-template-rows: 220px auto auto !important;
-    width: calc(100vw - 32px) !important;
-    gap: 6px !important;
-  }
-  .bento-photo { grid-column: 1 !important; grid-row: 1 !important; }
-  .bento-title { grid-column: 1 !important; grid-row: 2 !important; padding: 20px !important; }
-  .bento-disciplines { grid-column: 1 !important; grid-row: 3 !important; padding: 20px !important; }
-  .bento-main-title { font-size: clamp(24px, 8vw, 40px) !important; }
-  .bento-para { font-size: 11px !important; }
-
-  /* Section 3: Brands */
-  .s3-wrap { width: calc(100vw - 32px) !important; }
-  .s3-bento { width: calc(100vw - 32px) !important; padding: 16px !important; }
-  .s3-bento img { width: 100% !important; }
-
-  /* Section 4: The Work */
-  .s4-wrap { width: calc(100vw - 32px) !important; max-width: calc(100vw - 32px) !important; gap: 12px !important; }
-  .s4-card { padding: 28px 24px !important; }
-  .s4-card > div { flex-direction: column !important; gap: 20px !important; }
-  .s4-title { font-size: clamp(48px, 16vw, 80px) !important; }
-  .s4-desc { font-size: 12px !important; max-width: 100% !important; }
-
-  /* Section 5: Experience — single column */
-  .s5-wrap { width: calc(100vw - 32px) !important; gap: 10px !important; }
-  .s5-list { grid-template-columns: 1fr !important; gap: 6px !important; }
-  .s5-item { padding: 20px 18px 24px !important; }
-  .s5-company { font-size: 12px !important; }
-  .s5-bullets li { font-size: 10px !important; }
-
-  /* Section 6: Skills — single column */
-  .s6-wrap { width: calc(100vw - 32px) !important; gap: 10px !important; }
-  .s6-grid { grid-template-columns: 1fr !important; gap: 6px !important; }
-  .s6-card { padding: 20px 18px 24px !important; }
-  .s6-footer { flex-wrap: wrap; gap: 12px !important; justify-content: center; }
 }
 
 /* ── SECTION 5: EXPERIENCE ── */
@@ -487,25 +404,6 @@ html, body {
   width: 968px;
   max-width: calc(100vw - 80px);
 }
-
-.s5-header {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.s5-header::before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: var(--accent);
-}
-
 .s5-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -513,7 +411,6 @@ html, body {
   gap: 8px;
   width: 100%;
 }
-
 .s5-item {
   border-radius: 4px;
   border: 1px solid var(--border);
@@ -531,14 +428,12 @@ html, body {
   border-color: rgba(183,22,34,0.5);
   background: rgba(255,255,255,0.07);
 }
-
 .s5-num {
   font-size: 10px;
   font-weight: 700;
   color: var(--accent);
   letter-spacing: 0.06em;
 }
-
 .s5-top {
   display: flex;
   align-items: center;
@@ -551,59 +446,17 @@ html, body {
   letter-spacing: -0.01em;
   text-transform: uppercase;
 }
-
 .s5-center {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-
 .s5-role {
   font-size: 11px;
   font-weight: 700;
   color: rgba(255,255,255,0.7);
   letter-spacing: 0.04em;
 }
-
-.s5-desc {
-  font-size: 11px;
-  color: rgba(255,255,255,0.35);
-  line-height: 1.6;
-}
-
-.s5-right {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: auto;
-}
-
-.s5-period {
-  font-size: 10px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.3);
-  letter-spacing: 0.06em;
-  white-space: nowrap;
-}
-
-.s5-pill {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  border: 1px solid rgba(183,22,34,0.35);
-  padding: 3px 8px;
-  border-radius: 2px;
-}
-
-@media (max-width: 640px) {
-  .s5-list {
-    grid-template-columns: 1fr !important;
-  }
-}
-
 .s5-bullets {
   list-style: none;
   margin-top: 6px;
@@ -626,6 +479,30 @@ html, body {
   font-size: 9px;
   top: 2px;
 }
+.s5-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+.s5-period {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.s5-pill {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(183,22,34,0.35);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
 
 /* ── SECTION 6: SKILLS ── */
 .s6-wrap {
@@ -636,32 +513,12 @@ html, body {
   width: 968px;
   max-width: calc(100vw - 80px);
 }
-
-.s6-header {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.s6-header::before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: var(--accent);
-}
-
 .s6-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
   width: 100%;
 }
-
 .s6-card {
   border-radius: 4px;
   border: 1px solid var(--border);
@@ -677,7 +534,6 @@ html, body {
   border-color: rgba(183,22,34,0.5);
   background: rgba(255,255,255,0.07);
 }
-
 .s6-category {
   font-size: 11px;
   font-weight: 800;
@@ -688,13 +544,11 @@ html, body {
   border-bottom: 2px solid var(--accent);
   display: block;
 }
-
 .s6-skills {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-
 .s6-skill {
   font-size: 12px;
   color: rgba(255,255,255,0.5);
@@ -712,8 +566,6 @@ html, body {
   flex-shrink: 0;
   opacity: 0.7;
 }
-
-/* ── FOOTER ── */
 .s6-footer {
   width: 100%;
   display: flex;
@@ -722,7 +574,6 @@ html, body {
   gap: 24px;
   padding-top: 16px;
 }
-
 .s6-footer-label {
   font-size: 10px;
   font-weight: 700;
@@ -731,7 +582,6 @@ html, body {
   color: rgba(255,255,255,0.5);
   margin-right: 4px;
 }
-
 .s6-footer-link {
   font-size: 10px;
   font-weight: 700;
@@ -741,14 +591,16 @@ html, body {
   text-decoration: none;
   transition: color 0.2s;
 }
-.s6-footer-link:hover {
-  color: #fff;
-}
+.s6-footer-link:hover { color: #fff; }
 
-@media (max-width: 640px) {
-  .s6-grid {
-    grid-template-columns: 1fr !important;
-  }
+/* ── ANIMATIONS ── */
+@keyframes nameIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.3; }
+  50%      { opacity: 0.9; }
 }
 
 /* ── MOBILE SCROLLABLE SECTIONS ── */
@@ -761,6 +613,78 @@ html, body {
   }
   .section--scrollable::-webkit-scrollbar { display: none; }
   .section--scrollable { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* ── RESPONSIVE: TABLET ── */
+@media (max-width: 900px) {
+  .s1-name { font-size: clamp(14px, 4vw, 32px) !important; white-space: normal !important; text-align: center; }
+  .s2-bento {
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 200px 200px !important;
+    width: calc(100vw - 80px) !important;
+  }
+  .s3-bento { width: calc(100vw - 80px) !important; }
+  .s4-wrap { width: calc(100vw - 80px) !important; max-width: calc(100vw - 80px) !important; }
+  .s5-wrap { width: calc(100vw - 80px) !important; }
+  .s6-wrap { width: calc(100vw - 80px) !important; }
+  .dots { right: 16px !important; }
+}
+
+/* ── RESPONSIVE: MOBILE ── */
+@media (max-width: 640px) {
+  .s1-name {
+    font-size: clamp(22px, 7vw, 36px) !important;
+    white-space: normal !important;
+    text-align: center;
+    line-height: 1.2 !important;
+  }
+  .s1-links { flex-wrap: wrap; justify-content: center; }
+
+  .frame-corner { width: 20px !important; height: 20px !important; }
+  .frame-corner--tl { top: 12px !important; left: 12px !important; }
+  .frame-corner--tr { top: 12px !important; right: 12px !important; }
+  .frame-corner--bl { bottom: 12px !important; left: 12px !important; }
+  .frame-corner--br { bottom: 12px !important; right: 12px !important; }
+
+  .dots { right: 10px !important; }
+
+  /* Section 2 */
+  .s2-bento {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 220px auto auto !important;
+    width: calc(100vw - 32px) !important;
+    gap: 6px !important;
+  }
+  .bento-photo      { grid-column: 1 !important; grid-row: 1 !important; }
+  .bento-title      { grid-column: 1 !important; grid-row: 2 !important; padding: 20px !important; }
+  .bento-disciplines{ grid-column: 1 !important; grid-row: 3 !important; padding: 20px !important; }
+  .bento-main-title { font-size: clamp(24px, 8vw, 40px) !important; }
+  .bento-para       { font-size: 11px !important; }
+
+  /* Section 3 */
+  .s3-wrap  { width: calc(100vw - 32px) !important; }
+  .s3-bento { width: calc(100vw - 32px) !important; padding: 16px !important; }
+  .s3-bento img { width: 100% !important; }
+
+  /* Section 4 */
+  .s4-wrap  { width: calc(100vw - 32px) !important; max-width: calc(100vw - 32px) !important; gap: 12px !important; }
+  .s4-card  { padding: 28px 24px !important; }
+  .s4-inner { flex-direction: column !important; gap: 20px !important; }
+  .s4-title { font-size: clamp(48px, 16vw, 80px) !important; }
+  .s4-desc  { font-size: 12px !important; max-width: 100% !important; }
+
+  /* Section 5 */
+  .s5-wrap    { width: calc(100vw - 32px) !important; gap: 10px !important; }
+  .s5-list    { grid-template-columns: 1fr !important; gap: 6px !important; }
+  .s5-item    { padding: 20px 18px 24px !important; }
+  .s5-company { font-size: 12px !important; }
+  .s5-bullets li { font-size: 10px !important; }
+
+  /* Section 6 */
+  .s6-wrap { width: calc(100vw - 32px) !important; gap: 10px !important; }
+  .s6-grid { grid-template-columns: 1fr !important; gap: 6px !important; }
+  .s6-card { padding: 20px 18px 24px !important; }
+  .s6-footer { flex-wrap: wrap; gap: 12px !important; justify-content: center; }
 }
 </style>
 </head>
@@ -796,7 +720,7 @@ html, body {
 
   <!-- SECTION 1: NAME -->
   <section class="section active" data-index="0">
-    <div style="display:flex; flex-direction:column; align-items:center; gap:16px;">
+    <div class="s1-content">
       <span class="s1-name">Miguel Angel Romero <em>Jr.</em></span>
       <div class="s1-links">
         <span class="s1-links-label">Quick Links:</span>
@@ -806,44 +730,44 @@ html, body {
       </div>
     </div>
   </section>
-  <!-- SECTION 2: BENTO -->
+
+  <!-- SECTION 2: ABOUT -->
   <section class="section" data-index="1">
-    <div style="display:flex; flex-direction:column; align-items:flex-start; gap:12px;">
-      <div style="font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#fff; display:flex; align-items:center; gap:10px;">
-        <span style="display:block; width:20px; height:2px; background:var(--accent);"></span>
-        About Me
+    <div class="s2-wrap">
+      <div class="eyebrow">About Me</div>
+      <div class="s2-bento">
+        <div class="bento-photo">
+          <img src="pfp.png" alt="Miguel Romero Jr" />
+        </div>
+        <div class="bento-title">
+          <div class="bento-main-title">Full Stack<br>Marketer</div>
+          <div class="bento-subtitle">GTM &nbsp;|&nbsp; Content &nbsp;|&nbsp; Social &nbsp;|&nbsp; Community &nbsp;|&nbsp; AI</div>
+        </div>
+        <div class="bento-disciplines">
+          <p class="bento-para">A computer scientist who took his pragmatic mindset and dove into the world of marketing and communications. I've collaborated with cross-functional teams across diverse organizations, leading some of the most ambitious campaigns — regardless of budget. I believe that exceptional marketing stems from powerful narratives and thoughtful, strategic design.</p>
+        </div>
       </div>
-    <div class="s2-bento">
-      <div class="bento-photo">
-        <img src="pfp.png" alt="Miguel Romero Jr" />
-      </div>
-      <div class="bento-title">
-        <div class="bento-main-title">Full Stack<br>Marketer</div>
-        <div style="margin-top:10px; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);">GTM &nbsp;|&nbsp; Content &nbsp;|&nbsp; Social &nbsp;|&nbsp; Community &nbsp;|&nbsp; AI</div>
-      </div>
-      <div class="bento-disciplines">
-        <p class="bento-para">A computer scientist who took his pragmatic mindset and dove into the world of marketing and communications. I've collaborated with cross-functional teams across diverse organizations, leading some of the most ambitious campaigns — regardless of budget. I believe that exceptional marketing stems from powerful narratives and thoughtful, strategic design.</p>
-      </div>
-    </div>
     </div>
   </section>
+
   <!-- SECTION 3: BRANDS -->
   <section class="section" data-index="2">
     <div class="s3-wrap">
-      <div class="s3-header">Brands I've Worked With</div>
+      <div class="eyebrow">Brands I've Worked With</div>
       <div class="s3-bento">
         <img src="jobs.png" alt="Brands" />
       </div>
     </div>
   </section>
+
   <!-- SECTION 4: THE WORK -->
   <section class="section" data-index="3">
     <div class="s4-wrap">
-      <div class="s4-eyebrow">Visual Portfolio</div>
+      <div class="eyebrow">Visual Portfolio</div>
       <div class="s4-card">
-        <div style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:40px;">
+        <div class="s4-inner">
           <div class="s4-title">The<br><em>Work.</em></div>
-          <div style="display:flex; flex-direction:column; gap:20px; max-width:320px;">
+          <div class="s4-right">
             <p class="s4-desc">Campaigns, launches, live streams, and social content built across Agoric, Joyn, Gemini, and Nifty Gateway. Videos, design assets, and standout social moments.</p>
             <a href="work.html" class="s4-btn">View the Work <span class="s4-btn-arrow">→</span></a>
           </div>
@@ -852,11 +776,10 @@ html, body {
     </div>
   </section>
 
-
   <!-- SECTION 5: EXPERIENCE -->
   <section class="section section--scrollable" data-index="4">
     <div class="s5-wrap">
-      <div class="s5-header">Recent Experience</div>
+      <div class="eyebrow">Recent Experience</div>
       <div class="s5-list">
 
         <div class="s5-item">
@@ -923,14 +846,14 @@ html, body {
           </div>
         </div>
 
-      </div></div>
+      </div>
+    </div>
   </section>
-
 
   <!-- SECTION 6: SKILLS -->
   <section class="section section--scrollable" data-index="5">
     <div class="s6-wrap">
-      <div class="s6-header">Skills</div>
+      <div class="eyebrow">Skills</div>
       <div class="s6-grid">
 
         <div class="s6-card">
@@ -1042,7 +965,7 @@ html, body {
 
   window.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowDown' || e.key === 'ArrowRight') goTo(current + 1);
-    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') goTo(current - 1);
+    if (e.key === 'ArrowUp'   || e.key === 'ArrowLeft')  goTo(current - 1);
   });
 </script>
 
